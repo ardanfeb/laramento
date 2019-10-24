@@ -1,0 +1,81 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use App\Role;
+use App\User;
+
+class UsersSeeder extends Seeder
+{
+
+    public function run()
+    {
+
+        // Random Unique Code
+
+        $hasil = [];
+        for ($i = 0; $i < 3; $i++) {
+            $seed = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+            shuffle($seed);
+            $rand = '';
+            foreach (array_rand($seed, 6) as $k) $rand .= $seed[$k];
+            $hasil[$i] = $rand;
+        }
+
+
+        // Role
+
+        $ownerRole = new Role();
+        $ownerRole->name = "owner";
+        $ownerRole->display_name = "Owner";
+        $ownerRole->save();
+
+        $employeeRole = new Role();
+        $employeeRole->name = "employee";
+        $employeeRole->display_name = "Employee";
+        $employeeRole->save();
+
+        $resellerRole = new Role();
+        $resellerRole->name = "reseller";
+        $resellerRole->display_name = "Reseller";
+        $resellerRole->save();
+
+
+        // Sample User
+
+        $owner = new User();
+        $owner->codeuser = 'OWNER' . $hasil[0];
+        $owner->name = 'Owner';
+        $owner->email = 'owner@gmail.com';
+        $owner->phone = '08123';
+        $owner->address = 'Jl. Kehidupan';
+        $owner->birthdate = '2017-09-12';
+        $owner->gender = 'laki-laki';
+        $owner->password = bcrypt('password');
+        $owner->save();
+        $owner->attachRole($ownerRole);
+
+        $admin = new User();
+        $admin->codeuser = 'EMPLOYEE' . $hasil[1];
+        $admin->name = 'Administrator';
+        $admin->email = 'admin@gmail.com';
+        $admin->phone = '08111';
+        $admin->address = 'Jl. Kehidupan';
+        $admin->birthdate = '2017-09-12';
+        $admin->gender = 'laki-laki';
+        $admin->password = bcrypt('password');
+        $admin->save();
+        $admin->attachRole($employeeRole);
+
+        $member = new User();
+        $member->codeuser = 'LARAMENTO' . $hasil[2];
+        $member->name = 'Reseller';
+        $member->email = 'reseller@gmail.com';
+        $member->phone = '08222';
+        $member->address = 'Jl. Kehidupan';
+        $member->birthdate = '2017-09-12';
+        $member->gender = 'perempuan';
+        $member->password = bcrypt('password');
+        $member->save();
+        $member->attachRole($resellerRole);
+    }
+}

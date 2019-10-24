@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://localhost/petani/public/history -->
+<html style="height: auto; min-height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Habibi Garden</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    
+    <link rel="stylesheet" href="./Habibi Garden_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Habibi Garden_files/font-awesome.min.css">
+    <link rel="stylesheet" href="./Habibi Garden_files/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="./Habibi Garden_files/ionicons.min.css">
+    <link rel="stylesheet" href="./Habibi Garden_files/select2.min.css">
+    <link rel="stylesheet" href="./Habibi Garden_files/AdminLTE.css">
+    <link rel="stylesheet" href="./Habibi Garden_files/skin-green-light.css">
+        <link rel="stylesheet" href="./Habibi Garden_files/daterangepicker.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="skin-green-light sidebar-mini" style="height: auto; min-height: 100%;">
+    <div class="wrapper" style="height: auto; min-height: 100%;">
+
+        <!-- Main Header -->
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="http://localhost/petani/public/dashboard" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><img src="./Habibi Garden_files/habibi-minis.png" class="img-responsive" alt=""></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><img src="./Habibi Garden_files/habibi-minis.png" class="hidden-xs img-responsive pull-left" alt=""> <b>Habibi</b> Garden</span>
+            </a>
+
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="http://localhost/petani/public/history#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+                        <!-- Tasks Menu -->
+                        <li class="dropdown tasks-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="http://localhost/petani/public/history#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ion ion-android-notifications"></i>
+                                <span class="label label-info">9</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 9 notification</li>
+                                <li>
+                                    <ul class="menu">
+                                        <li>
+                                            <!-- Task item -->
+                                            <a href="http://localhost/petani/public/history#">
+                                                <h3>Design some buttons<small class="pull-right">20%</small></h3>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="sr-only">20% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="footer">
+                                    <a href="http://localhost/petani/public/history#">View all tasks</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Logout Menu -->
+                        <li class="dropdown logout-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="http://localhost/petani/public/history#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="./Habibi Garden_files/avatar.jpg" class="logout-image" alt="Logout Image">
+                                <i class="ion ion-android-arrow-dropdown"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header"><b>Menu</b></li>
+                                <li>
+                                    <ul class="menu">
+                                        <li>
+                                            <a href="http://localhost/petani/public/profil"><h3>My Profile</h3></a>
+                                            
+                                            <hr class="batas">
+                                            <form id="logout-form" action="http://localhost/petani/public/logout" method="POST">
+                                                <input type="hidden" name="_token" value="daV6V1j6CltmYNa2CddjDdd8gCJ8EZf22rescM3D">
+                                                <a onclick="document.getElementById(&#39;logout-form&#39;).submit()" role="button"><h3><b><i class="fa fa-sign-out pull-right"></i>Sign out</b></h3></a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="./Habibi Garden_files/avatar.jpg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Habibi Garden</p>
+                                                            <p><span class="label bgc-orange">admin</span></p>
+                                                                                                                                                                    </div>
+                    </div>
+                    <li class="header"><b>NAVIGASI</b></li>
+                    <li class=""><a href="http://localhost/petani/public/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+<li class=""><a href="http://localhost/petani/public/farm"><i class="fa fa-map-o"></i> <span>Kelola Kebun</span></a></li>
+<li class=""><a href="http://localhost/petani/public/user"><i class="fa fa-users"></i> <span>Kelola Pengguna</span></a></li>
+<li class=""><a href="http://localhost/petani/public/plants"><i class="fa fa-database"></i> <span>Database Tanaman</span></a></li>
+<li class="active"><a href="http://localhost/petani/public/history"><i class="fa fa-calendar"></i> <span>Data History</span></a></li>
+                </ul>
+            </section>
+        </aside>
+
+            <div class="content-wrapper" style="min-height: 828px;">
+        
+        <section class="content-header">
+            <ol class="breadcrumb">
+                <li class="active">
+                    <a href="http://localhost/petani/public/history#"><i class="fa fa-calendar"></i> Data History</a>
+                </li>
+            </ol>
+            <br class="hidden-md hidden-lg hidden-sm">
+            <h1><b>Data History</b></h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content container-fluid">
+            
+            
+            <div class="row">
+
+                
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <b>Lihat Data</b>
+                        </div>
+                        <div class="panel-body">
+
+                            
+                            <div class="row">
+
+                                
+                                <div class="col-md-4" style="border-right:1px solid #eee;">
+
+                                    
+                                    <div class="form-group">
+                                        <select class="form-control" name="" id="device" onchange="device()">
+                                            <option selected="" disabled="">Pilih Device</option>
+                                            <option value="aws">AWS</option>
+                                            <option value="dosispump">Dosispump</option>
+                                            <option value="groundsensor">Groundsensor</option>
+                                        </select>
+                                    </div>
+                                    
+                                    
+
+                                    
+                                    <div class="form-group" id="sensoraws" style="display: none;">
+                                        <select class="form-control" name="">
+                                            <option selected="" disabled="">Pilih Sensor</option>
+                                            <option value="temp">Suhu</option>
+                                            <option value="hum">Kelembaban</option>
+                                            <option value="pres">Pressure</option>
+                                            <option value="light">Light</option>
+                                            <option value="uv">UV</option>
+                                            <option value="rainonehour">Hujan Perjam</option>
+                                            <option value="rainoneday">Hujan Perhari</option>
+                                            <option value="windavg">Kecepatan Angin Rata-Rata</option>
+                                            <option value="windmax">Kecepatan Angin Maksimal</option>
+                                            <option value="winddir">Arah Angin</option>
+                                            <option value="voltsolar">Volt Solar</option>
+                                            <option value="currsolar">Arus Solar</option>
+                                            <option value="voltbatt">Volt Battere</option>
+                                            <option value="currbatt">Arus Battere</option>
+                                        </select>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group" id="sensorgs" style="display: none;">
+                                        <select class="form-control" name="">
+                                            <option selected="" disabled="">Pilih Sensor</option>
+                                            <option value="temp">Suhu Tanah</option>
+                                            <option value="mois">Kelembaban Tanah</option>
+                                            <option value="nutr">Nutrisi Tanah</option>
+                                            <option value="ph">PH Tanah</option>
+                                            <option value="inten">Intensitas Cahaya</option>
+                                            <option value="batt">Battere</option>
+                                        </select>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group" id="sensordp" style="display: none;">
+                                        <select class="form-control" name="">
+                                            <option selected="" disabled="">Pilih Sensor</option>
+                                            <option value="dosispump">Dosispump</option>
+                                        </select>
+                                    </div>
+
+                                    
+
+                                    
+                                    <div class="form-group pilihkebunawsdp" style="display: none;">
+                                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Pilih Kebun" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                                                        <option value="GARUT_1">Enceng GH</option> 
+                                                                                        <option value="GARUT_2">Enceng OF</option> 
+                                                                                        <option value="LAMPUNG_1">Sarwo Farm GH</option> 
+                                                                                        <option value="LAMPUNG_2">Sarwo  Farm OF</option> 
+                                                                                        <option value="MINDS">Minds</option> 
+                                                                                        <option value="PACITAN_1">Farming Art</option> 
+                                                                                        <option value="BANDUNG_1">Habibi Farm</option> 
+                                                                                        <option value="JAKARTA_1">Sabisa Farm</option> 
+                                                                                        <option value="BANDUNG_2">BDV Farm</option> 
+                                                                                        <option value="BANDUNG_3">Habibi Farm 2</option> 
+                                                                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="Pilih Kebun" style="width: 100px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                    </div>
+
+                                    
+                                    <div class="form-group pilihkebungs" style="display: none;">
+                                        <select class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Pilih Kebun" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                                                        <option value="Enceng OF">Enceng OF (zona 1)</option> 
+                                                                                        <option value="Enceng OF">Enceng OF (zona 2)</option> 
+                                                                                        <option value="Enceng OF">Enceng OF (zona 3)</option> 
+                                                                                        <option value="Farming Art">Farming Art (zona 1)</option> 
+                                                                                        <option value="Habibi Farm">Habibi Farm (zona 1)</option> 
+                                                                                        <option value="Habibi Farm">Habibi Farm (zona 2)</option> 
+                                                                                        <option value="Sabisa Farm">Sabisa Farm (zona 1)</option> 
+                                                                                        <option value="BDV Farm">BDV Farm (zona 1)</option> 
+                                                                                        <option value="BDV Farm">BDV Farm (zona 2)</option> 
+                                                                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="Pilih Kebun" style="width: 100px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-default btn-block" id="daterange-btn">
+                                            <span><i class="fa fa-calendar"></i> Pilih Rentang Waktu</span>
+                                            <i class="fa fa-caret-down pull-right" style="padding-top:5px;"></i>
+                                        </button>
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <a href="http://localhost/petani/public/history" class="btn btn-block bg-green">Proses</a>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <hr style="margin:0;margin-bottom:15px;padding:0;">
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <a href="http://localhost/petani/public/history#" class="btn btn-block btn-default"><i class="fa fa-download" style="margin-right:5px;"></i> Import to Excel</a>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-md-8 text-center">
+                                    <b>Quick View</b>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>   
+            </div>
+
+            
+            <div class="row">
+
+                
+                <div class="col-md-12 tampildata">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <b>Hasil Data</b>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+
+                                
+                                <div class="col-md-4">
+                                    <p class="text-center"><b>Data 1</b></p>
+                                    
+                                </div>
+                                
+                                
+                                <div class="col-md-4">
+                                    <p class="text-center"><b>Data 2</b></p>
+                                    
+                                </div>
+                                    
+                                
+                                <div class="col-md-4">
+                                    <p class="text-center"><b>Data 3</b></p>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </section>
+    </div>
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            
+            <strong>Copyright © 2017 <a href="http://localhost/petani/public/history#">HabibiGarden</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- JS -->
+    <script src="./Habibi Garden_files/jquery.min.js"></script>
+    <script src="./Habibi Garden_files/bootstrap.min.js"></script>
+    <script src="./Habibi Garden_files/adminlte.min.js"></script>
+        <script type="text/javascript" src="./Habibi Garden_files/moment.min.js"></script>
+    <script type="text/javascript" src="./Habibi Garden_files/daterangepicker.js"></script>
+    <script type="text/javascript" src="./Habibi Garden_files/select2.full.min.js"></script>
+    <script type="text/javascript" src="./Habibi Garden_files/echarts.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            // $('.tampildata').hide();
+            $('.pilihkebunawsdp').hide();
+            $('.pilihkebungs').hide();
+            $('#sensorgs').hide();
+            $('#sensordp').hide();
+            $('#sensoraws').hide();
+
+            // Select 2
+            $('.select2').select2()
+
+            // Date Range Picker
+            $('#daterange-btn').daterangepicker(
+                {
+                    // ranges   : {
+                    //     'Hari Ini'       : [moment(), moment()],
+                    //     'Kemarin'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    //     '1 Bulan Terakhir': [moment().subtract(29, 'days'), moment()],
+                    //     'Bulan Ini'  : [moment().startOf('month'), moment().endOf('month')]
+                    // },
+                    startDate: moment().subtract(7, 'days'),
+                    endDate  : moment()
+                },
+
+                function (start, end) {
+                    $('#daterange-btn span').html(start.format('DD/MM/YY') + ' - ' + end.format('DD/MM/YY'))
+                    
+                    // var from_date = start.format('YYYY-MM-DD');
+                    // var to_date = end.format('YYYY-MM-DD');
+                    
+                    // var a = document.getElementById('excel');
+                    // a.href = "http://localhost/petani/public/admin/report/" + from_date + "/export/" + to_date;
+                    // document.getElementById('excel').click();
+                }
+            )
+        });
+
+        function device() {
+            var device = document.getElementById("device").value;
+            if (device == "aws") {
+                $('.pilihkebungs').hide();
+                $('#sensorgs').hide();
+                $('#sensordp').hide();
+
+                $('#sensoraws').slideDown(500);
+                $('.pilihkebunawsdp').slideDown(500);
+            } else if(device == "dosispump") {
+                $('.pilihkebungs').hide();
+                $('#sensoraws').hide();
+                $('#sensorgs').hide();
+                
+                $('#sensordp').slideDown(500);
+                $('.pilihkebunawsdp').slideDown(500);
+            } else {
+                $('.pilihkebunawsdp').hide();
+                $('#sensoraws').hide();
+                $('#sensordp').hide();
+                
+                $('#sensorgs').slideDown(500);
+                $('.pilihkebungs').slideDown(500);
+            }
+        }
+
+        // Sensor 1
+        var domTmp = document.getElementById("awsTmp");
+        var chartTmp = echarts.init(domTmp);
+        optionTmp = null;
+        optionTmp = {
+            tooltip: {
+                trigger: 'axis',
+                position: function (pt) {
+                    return [pt[0], '10%'];
+                }
+            },
+            title: {
+                left: 'top',
+                text: 'Temperature',
+            },
+            legend: {
+                data: ['BDV Farm', 'Enceng OF'],
+                align: 'right',
+                right: 0,
+                orient: 'vertical'
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: [0, 1, 2, 3, 4, 5]
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+            },
+            dataZoom: [{
+                type: 'inside',
+                start: 0,
+                end: 100
+            }, {
+                start: 0,
+                end: 100,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '60%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 1,
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowOffsetX: 1,
+                    shadowOffsetY: 1,
+                }
+            }],
+            series: [
+                {
+                    name:'BDV Farm',
+                    type:'line',
+                    smooth:true,
+                    itemStyle: {
+                        color: 'rgb(0,180,185)'
+                    },
+                    data: [0, 1, 2, 3, 4, 5]
+                }, 
+                {
+                    name:'Enceng OF',
+                    type:'line',
+                    smooth:true,
+                    itemStyle: {
+                        color: 'rgb(254,192,8)'
+                    },
+                    data: [5, 4, 3, 2, 1, 0]
+                }
+            ],
+            textStyle: {
+                fontFamily: 'Lato',
+            }
+        };
+        if (optionTmp && typeof optionTmp === "object") { chartTmp.setOption(optionTmp, true); }
+
+        // Sensor 2
+        var domTmp2 = document.getElementById("awsTmp2");
+        var chartTmp2 = echarts.init(domTmp2);
+        optionTmp2 = null;
+        optionTmp2 = {
+            tooltip: {
+                trigger: 'axis',
+                position: function (pt) {
+                    return [pt[0], '10%'];
+                }
+            },
+            title: {
+                left: 'top',
+                text: 'Temperature',
+            },
+            legend: {
+                data: ['BDV Farm', 'Enceng OF'],
+                align: 'right',
+                right: 0,
+                orient: 'vertical'
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: [0, 1, 2, 3, 4, 5]
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+            },
+            dataZoom: [{
+                type: 'inside',
+                start: 0,
+                end: 100
+            }, {
+                start: 0,
+                end: 100,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '60%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 1,
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowOffsetX: 1,
+                    shadowOffsetY: 1,
+                }
+            }],
+            series: [
+                {
+                    name:'BDV Farm',
+                    type:'line',
+                    smooth:true,
+                    itemStyle: {
+                        color: 'rgb(0,180,185)'
+                    },
+                    data: [0, 1, 2, 3, 4, 5]
+                }, 
+                {
+                    name:'Enceng OF',
+                    type:'line',
+                    smooth:true,
+                    itemStyle: {
+                        color: 'rgb(254,192,8)'
+                    },
+                    data: [5, 4, 3, 2, 1, 0]
+                }
+            ],
+            textStyle: {
+                fontFamily: 'Lato',
+            }
+        };
+        if (optionTmp2 && typeof optionTmp2 === "object") { chartTmp2.setOption(optionTmp2, true); }
+
+        // Sensor 3
+        var domTmp3 = document.getElementById("awsTmp3");
+        var chartTmp3 = echarts.init(domTmp3);
+        optionTmp3 = null;
+        optionTmp3 = {
+            tooltip: {
+                trigger: 'axis',
+                position: function (pt) {
+                    return [pt[0], '10%'];
+                }
+            },
+            title: {
+                left: 'top',
+                text: 'Temperature',
+            },
+            legend: {
+                data: ['BDV Farm', 'Enceng OF'],
+                align: 'right',
+                right: 0,
+                orient: 'vertical'
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: [0, 1, 2, 3, 4, 5]
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+            },
+            dataZoom: [{
+                type: 'inside',
+                start: 0,
+                end: 100
+            }, {
+                start: 0,
+                end: 100,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '60%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 1,
+                    shadowColor: 'rgba(0, 0, 0, 0.2)',
+                    shadowOffsetX: 1,
+                    shadowOffsetY: 1,
+                }
+            }],
+            series: [
+                {
+                    name:'BDV Farm',
+                    type:'line',
+                    smooth:true,
+                    itemStyle: {
+                        color: 'rgb(0,180,185)'
+                    },
+                    data: [0, 1, 2, 3, 4, 5]
+                }, 
+                {
+                    name:'Enceng OF',
+                    type:'line',
+                    smooth:true,
+                    itemStyle: {
+                        color: 'rgb(254,192,8)'
+                    },
+                    data: [5, 4, 3, 2, 1, 0]
+                }
+            ],
+            textStyle: {
+                fontFamily: 'Lato',
+            }
+        };
+        if (optionTmp3 && typeof optionTmp3 === "object") { chartTmp3.setOption(optionTmp3, true); }
+
+    </script>
+
+
+<div class="daterangepicker dropdown-menu ltr show-calendar opensright"><div class="calendar left"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_start" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"></div></div><div class="calendar right"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"></div></div><div class="ranges"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" disabled="disabled" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div></body></html>
