@@ -41,6 +41,7 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'label' => 'required',
             'price_buy' => 'required|numeric',
             'price_sell' => 'required|numeric',
         ]);
@@ -61,6 +62,15 @@ class ProductController extends Controller
             $product->img = $filename;
         }
         $product->save();
+        $id_product = $product->id;
+
+        // Insert to Inventories
+        if ($product) {
+            DB::table('inventories')->insert([
+                'products_id' => $id_product,
+                'qty' => 0
+            ]);
+        }
 
         return redirect()->route('product.index')->with([
             'status' => $product ? 'success' : 'danger',
@@ -94,6 +104,7 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'label' => 'required',
             'price_buy' => 'required|numeric',
             'price_sell' => 'required|numeric',
         ]);
@@ -170,7 +181,7 @@ class ProductController extends Controller
                 ]);
             })
             ->editColumn('product_name', function($product){
-                return $product->product_name." - ".($product->label_name !== null ? "<b style='margin-left:5px;'>".$product->label_name."</b>" : "");
+                return $product->product_name." <b class='badge' style='margin-left:5px;'>".$product->label_name."</b>";
             })
             ->editColumn('price', function($product){
                 return "Rp. ".number_format($product->price, 0, ',', '.');

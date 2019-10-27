@@ -41,6 +41,7 @@ Route::get('/inventory/stock_in/{id}', 'InventoryController@stock_in_show')->nam
 Route::get('/inventory/stock_in_data', 'InventoryController@stock_in_data')->name('inventory.stock_in.data');
 // Stock Init
 Route::get('/inventory', 'InventoryController@index')->name('inventory.index');
+Route::get('/inventory/stock_data', 'InventoryController@stock_data')->name('inventory.stock.data');
 
 // LABEL
 // Route::match(['put', 'patch'], '/product/update_label/{label}', 'ProductController@update_label')->name('label.update');

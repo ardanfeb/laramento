@@ -23,6 +23,32 @@ class InventoryController extends Controller {
         return view('inventory.index');
     }
 
+    public function stock_data() 
+    {
+        $inventories = DB::table('inventories')
+            ->select('products.product_name', 'labels.label_name', 'categories.category_name', 'inventories.qty')
+            ->join('products', 'products.id', '=', 'inventories.products_id')
+            ->join('labels', 'labels.id', '=', 'products.labels_id')
+            ->leftJoin('categories', 'categories.id', '=', 'products.categories_id')
+            ->get();
+
+        return Datatables::of($inventories)
+            ->editColumn('product_name', function($inventories){
+                return "<div>".$inventories->product_name." <span class='badge' style='margin-left:5px;'>".$inventories->label_name."</span></div>";
+            })
+            ->editColumn('qty', function($inventories){
+                if ($inventories->qty <= 0) {
+                    return "<div class='text-right'><span style='margin-top:3px;' title='Stok Habis' class='fa fa-exclamation-circle txtc-red pull-left'></span><b class='txtc-red'>".$inventories->qty."</b></div>";
+                } else if ($inventories->qty <= 10) {
+                    return "<div class='text-right'><span style='margin-top:3px;' title='Stok Hampir Habis' class='fa fa-exclamation-circle txtc-yellow pull-left'></span><b class='txtc-yellow'>".$inventories->qty."</b></div>";
+                } else {
+                    return "<div class='text-right'><b>".$inventories->qty."</b></div>";
+                }
+            })
+            ->rawColumns(['qty', 'product_name'])
+            ->make(true);
+    }
+
     // STOCK MASUK
 
     public function stock_in() 
@@ -83,11 +109,13 @@ class InventoryController extends Controller {
                 'updated_at' => Carbon::now(),
             );
             $items[] = $item;
-            // DB::table('stocks')->where('products_id', $productArray[$i])->where('size', $sizeArray[$i])->decrement('stock', $pcsArray[$i]);
+
+            // Insert Stok Global
+            DB::table('inventories')->where('products_id', $product[$i])->increment('qty', $qty[$i]);
         }
         DB::table("stock_in_items")->insert($items);
 
-        return redirect()->route('inventory.stock_in.create');
+        return redirect()->route('inventory.stock_in');
     }
 
     public function stock_in_show($id)
