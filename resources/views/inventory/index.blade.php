@@ -6,7 +6,7 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li class="active"><a href="{{ route('inventory.index') }}"><i class="fas fa-boxes"></i>Inventory</a></li>
+                <li class="active"><a href="{{ route('inventory.index') }}"><i class="fas fa-boxes"></i>Inventori</a></li>
             </ol>
         </section>
 

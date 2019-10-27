@@ -6,7 +6,8 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li class="active"><a href="{{ route('report.index') }}"><i class="fas fa-book"></i>Laporan</a></li>
+                <li><a href="{{ route('inventory.index') }}"><i class="fas fa-boxes"></i>Inventori</a></li>
+                <li class="active"><a href="{{ route('inventory.stock_out') }}">Stok Keluar</a></li>
             </ol>
         </section>
 

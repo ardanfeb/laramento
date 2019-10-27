@@ -9,8 +9,8 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li><a href="{{ route('customer.index') }}"><i class="fas fa-user fa-sm"></i>Customer</a></li>
-                <li class="active"><a href="{{ route('customer.edit', $data->id) }}">Edit</a></li>
+                <li><a href="{{ route('customer.index') }}"><i class="fas fa-user fa-sm"></i>Pelanggan</a></li>
+                <li class="active"><a href="{{ route('customer.edit', $data->id) }}">Ubah</a></li>
             </ol>
         </section>
 
@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>Customer Information</b>
+                            <b>Informasi Pelanggan</b>
                         </div>
                         <div class="panel-body">
 
@@ -37,34 +37,34 @@
 
                                         {{-- Nama --}}
                                         <div class="col-md-12 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                            <label>Name</label>
+                                            <label>Nama</label>
                                             <input type="" class="form-control" name="name" placeholder="e.g. John Doe" value="{{ $data->customer_name }}">
                                             {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                                         </div>
 
                                         {{-- Phone --}}
                                         <div class="col-md-12 form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                            <label>Phone Number</label>
+                                            <label>No. Telpon</label>
                                             <input type="" class="form-control" name="phone" placeholder="e.g. 08123456789" value="{{ $data->phone }}">
                                             {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                                         </div>
 
                                         {{-- Address --}}
                                         <div class="col-md-12 form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                            <label>Address</label>
+                                            <label>Alamat</label>
                                             <textarea class="form-control" name="address" rows="1" cols="80" placeholder="e.g. JL. Jalan">{{ $data->address }}</textarea>
                                             {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
                                         </div>
 
                                         {{-- Note --}}
                                         <div class="col-md-12 form-group{{ $errors->has('note') ? ' has-error' : '' }}">
-                                            <label>Note</label>
+                                            <label>Catatan</label>
                                             <textarea class="form-control" name="note" rows="3" cols="80" placeholder="e.g. Keterangan lain-lain">{{ $data->note }}</textarea>
                                             {!! $errors->first('note', '<p class="help-block">:message</p>') !!}
                                         </div>
 
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn bg-green pull-right">Edit</button>
+                                            <button type="submit" class="btn bg-green pull-right">Ubah</button>
                                         </div>
                                     </div>
                                 </div>

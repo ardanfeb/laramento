@@ -12,11 +12,11 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li class="active"><a href="{{ route('product.index') }}"><i class="fas fa-shopping-bag"></i>Product</a></li>
+                <li class="active"><a href="{{ route('product.index') }}"><i class="fas fa-shopping-bag"></i>Produk</a></li>
             </ol>
             <ul class="secondmenu" >
-                <li class="active"><a onclick="changeTab('product')" href="#product" data-toggle="tab">Product</a></li>
-                <li><a onclick="changeTab('category')" href="#category" data-toggle="tab">Category</a></li>
+                <li class="active"><a onclick="changeTab('product')" href="#product" data-toggle="tab">Produk</a></li>
+                <li><a onclick="changeTab('category')" href="#category" data-toggle="tab">Kategori</a></li>
                 <li><a onclick="changeTab('label')" href="#label" data-toggle="tab">Label</a></li>
             </ul>
         </section>
@@ -47,9 +47,9 @@
                     {{-- Panel Product --}}
                     <div class="panel panel-default panel-product">
                         <div class="panel-heading">
-                            <b>Product</b>
+                            <b>Produk</b>
                             <a href="{{ route("product.create") }}" class="btn-xs btn-default pull-right">
-                                Add Product<i class="fas fa-plus-circle" style="margin-left:10px;"></i>
+                                Tambah Produk<i class="fas fa-plus-circle" style="margin-left:10px;"></i>
                             </a>
                         </div>
                         <div class="panel-body">
@@ -57,10 +57,9 @@
                                 <thead>
                                     <tr>
                                         <th style="width:30px;">No</th>
-                                        <th>Product</th>
-                                        <th>Category</th>
-                                        <th>Store</th>
-                                        <th>Price</th>
+                                        <th>Produk</th>
+                                        <th>Kategori</th>
+                                        <th>Harga</th>
                                         <th style="width:30px;"></th>
                                     </tr>
                                 </thead>
@@ -71,9 +70,9 @@
                     {{-- Panel Category --}}
                     <div class="panel panel-default panel-category">
                         <div class="panel-heading">
-                            <b>Category</b>
+                            <b>Kategori</b>
                             <a href="#" onclick="showForm('category')" class="btn-xs btn-default pull-right">
-                                Add Category<i class="fas fa-caret-down" style="margin-left:10px;"></i>
+                                Tambah Kategori<i class="fas fa-caret-down" style="margin-left:10px;"></i>
                             </a>
                         </div>
                         <div class="panel-body">
@@ -83,10 +82,10 @@
                                 <form action="{{ route('category.store') }}" method="post">
                                     {{ csrf_field() }}
                                     <div style="padding:0 15px;" class="col-md-12 input-group{{ $errors->has('category_name') ? ' has-error' : '' }}">
-                                        <input type="" class="form-control" name="category_name" placeholder="Put your category name ...">
+                                        <input type="" class="form-control" name="category_name" placeholder="Masukan kategori ...">
                                         {!! $errors->first('category_name', '<p class="help-block">:message</p>') !!}
                                         <div class="input-group-btn">
-                                            <button type="submit" class="btn bg-green">Add Category</button>
+                                            <button type="submit" class="btn bg-green">Tambah Kategori</button>
                                         </div>
                                     </div>
 
@@ -98,7 +97,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width:30px;">No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th style="width:30px;"></th>
                                     </tr>
                                 </thead>
@@ -111,7 +110,7 @@
                         <div class="panel-heading">
                             <b>Label</b>
                             <a href="#" onclick="showForm('label')" class="btn-xs btn-default pull-right">
-                                Add Label<i class="fas fa-caret-down" style="margin-left:10px;"></i>
+                                Tambah Label<i class="fas fa-caret-down" style="margin-left:10px;"></i>
                             </a>
                         </div>
                         <div class="panel-body">
@@ -121,10 +120,10 @@
                                 <form action="{{ route('label.store') }}" method="post">
                                     {{ csrf_field() }}
                                     <div style="padding:0 15px;" class="col-md-12 input-group{{ $errors->has('label_name') ? ' has-error' : '' }}">
-                                        <input type="" class="form-control" name="label_name" placeholder="Put your label name ...">
+                                        <input type="" class="form-control" name="label_name" placeholder="Masukan label ...">
                                         {!! $errors->first('label_name', '<p class="help-block">:message</p>') !!}
                                         <div class="input-group-btn">
-                                            <button type="submit" class="btn bg-green">Add Label</button>
+                                            <button type="submit" class="btn bg-green">Tambah Label</button>
                                         </div>
                                     </div>
 
@@ -136,7 +135,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width:30px;">No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th style="width:30px;"></th>
                                     </tr>
                                 </thead>
@@ -186,7 +185,6 @@
                         { data: 'rownum', name: 'rownum' },
                         { data: 'product_name', name: 'product_name' },
                         { data: 'category_name', name: 'category_name' },
-                        { data: 'store_name', name: 'store_name' },
                         { data: 'price', name: 'price' },
                         { data: 'action', name: 'action', orderable: false, searchable: false }
                     ],

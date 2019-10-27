@@ -17,37 +17,37 @@
             <div class="row">
 
                 {{-- Sales by value --}}
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>Sales by value</b>
+                            <b>Penjualan <small>(berdasarkan nilai)</small></b>
                         </div>
                         <div class="panel-body">
-                            <b>Sales by value</b>
+                            
                         </div>
                     </div>
                 </div>
                 
                 {{-- Sales by quantity --}}
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading bg-default">
-                            <b>Sales by quantity</b>
+                            <b>Penjualan <small>(berdasarkan jumlah barang)</small></b>
                         </div>
                         <div class="panel-body">
-                            <b>Sales by quantity</b>
+
                         </div>
                     </div>
                 </div>
 
                 {{-- Gross profit --}}
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading bg-default">
-                            <b>Gross Profit</b>
+                            <b>Laba Kotor</b>
                         </div>
                         <div class="panel-body">
-                            <b>Sales by quantity</b>
+
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,18 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading bg-default">
-                            <b>Customer by count</b>
+                            <b>Jumlah Pelanggan</b>
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Customer by count --}}
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading bg-default">
+                            <b>Jumlah Reseller</b>
                         </div>
                         <div class="panel-body">
                         </div>
@@ -72,7 +83,7 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading bg-default">
-                            <b>Customer by place</b>
+                            <b>Pelanggan <small>(berdasarkan tempat)</small></b>
                         </div>
                         <div class="panel-body">
                         </div>
@@ -83,7 +94,7 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading bg-default">
-                            <b>Input sales by admin</b>
+                            <b>Input Penjualan <small>(oleh admin)</small></b>
                         </div>
                         <div class="panel-body">
                             <p class="text-center">Per September 2019</p>
@@ -107,10 +118,21 @@
             <div class="row">
 
                 {{-- Top sales product --}}
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading bg-default">
-                            <b>Top sales product</b>
+                            <b>Produk <small class="txtc-green">(berdasarkan penjualan tertinggi)</small></b>
+                        </div>
+                        <div class="panel-body">
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Top sales product --}}
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading bg-default">
+                            <b>Produk <small class="txtc-orange">(berdasarkan penjualan terendah)</small></b>
                         </div>
                         <div class="panel-body">
                         </div>
@@ -118,10 +140,10 @@
                 </div>
 
                 {{-- Top selling category --}}
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading bg-default">
-                            <b>Top selling category</b>
+                            <b>Kategori Produk Terlaris</b>
                         </div>
                         <div class="panel-body">
                         </div>

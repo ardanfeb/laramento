@@ -15,11 +15,10 @@ class CreateStockOutsTable extends Migration
     {
         Schema::create('stock_outs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('stores_id');
-            $table->mediumText('note')->nullable();;
+            $table->string('code');
+            $table->mediumText('note')->nullable();
+            $table->string('input_by');
             $table->timestamps();
-
-            $table->foreign('stores_id')->references('id')->on('stores');
         });
     }
 

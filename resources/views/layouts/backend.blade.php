@@ -62,8 +62,7 @@
                     <ul class="nav navbar-nav">
 
                         <!-- Tasks Menu -->
-                        <li class="dropdown tasks-menu">
-                            <!-- Menu Toggle Button -->
+                        {{-- <li class="dropdown tasks-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fas fa-bell"></i>
                                 <span class="label bgc-orange">9</span>
@@ -73,7 +72,6 @@
                                 <li>
                                     <ul class="menu">
                                         <li>
-                                            <!-- Task item -->
                                             <a href="#">
                                                 <h3>Design some buttons<small class="pull-right">20%</small></h3>
                                                 <div class="progress xs">
@@ -89,7 +87,7 @@
                                     <a href="#">View all tasks</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
                         <!-- Logout Menu -->
                         <li class="dropdown logout-menu">
@@ -105,11 +103,11 @@
                                     <ul class="menu">
                                         <li>
                                             {{-- <a href="{{ route('additional.profile') }}"><h3>My Profile</h3></a> --}}
-                                            <a href="#"><h3>Account Setting</h3></a>
+                                            <a href="#"><h3>Pengaturan Akun</h3></a>
                                             <hr class="batas">
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                                 {{ csrf_field() }}
-                                                <a onclick="document.getElementById('logout-form').submit()" role="button"><h3><b><i class="fa fa-sign-out pull-right"></i>Sign out</b></h3></a>
+                                                <a onclick="document.getElementById('logout-form').submit()" role="button"><h3><b><i class="fa fa-sign-out pull-right"></i>Keluar</b></h3></a>
                                             </form>
                                         </li>
                                     </ul>
@@ -135,17 +133,14 @@
                             @role('owner')
                                 <p><span class="label bgc-green">Owner</span></p>
                             @endrole
-                            @role('admin')
-                                <p><span class="label bgc-orange">Administrator</span></p>
+                            @role('employee')
+                                <p><span class="label bgc-orange">Karyawan</span></p>
                             @endrole
-                            @role('farmer')
-                                <p><span class="label bgc-yellow">petani</span></p>
-                            @endrole
-                            @role('seller')
-                                <p><span class="label bgc-blue">penjual</span></p>
+                            @role('reseller')
+                                <p><span class="label bgc-blue">Reseller</span></p>
                             @endrole
                             @role('guest')
-                                <p><span class="label bgc-blue">tamu</span></p>
+                                <p><span class="label bgc-blue">Tamu</span></p>
                             @endrole
                         </div>
                     </div>
@@ -158,8 +153,8 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <div class="pull-right hidden-xs"><a href="#"><b><i class="fas fa-at fa-xs"></i>ardanfeb</b></a></div>
-            <strong>Copyright &copy; 2019 <a href="#">Laramento</a>.</strong> All rights reserved.
+            <div class="pull-right hidden-xs"><b>Made with <i style="color:red" class="fas fa-heart fa-xs"></i> from Bandung by <a href="#"><i class="fas fa-at fa-xs"></i>ardanfeb</a></b></div>
+            <strong>Copyright &copy; 2019 <a href="#">Laramento</a></strong>
         </footer>
     </div>
     <!-- ./wrapper -->

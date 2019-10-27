@@ -10,8 +10,8 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li><a href="{{ route('employee.index') }}"><i class="fas fa-user-circle"></i>Employee</a></li>
-                <li class="active"><a href="{{ route('employee.create') }}">Create</a></li>
+                <li><a href="{{ route('employee.index') }}"><i class="fas fa-user-circle"></i>Karyawan</a></li>
+                <li class="active"><a href="{{ route('employee.create') }}">Tambah</a></li>
             </ol>
         </section>
 
@@ -25,7 +25,7 @@
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>Employee Information</b>
+                            <b>Informasi Karyawan</b>
                         </div>
                         <div class="panel-body row">
 
@@ -35,28 +35,28 @@
 
                                 {{-- Nama --}}
                                 <div class="col-md-12 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label>Name :</label>
+                                    <label>Nama</label>
                                     <input type="" class="form-control" name="name" placeholder="e.g. John Doe">
                                     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                                 </div>
 
                                 {{-- Email --}}
                                 <div class="col-md-12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label>Email :</label>
+                                    <label>Email</label>
                                     <input type="" class="form-control" name="email" placeholder="e.g. john.doe@gmail.com">
                                     {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                                 </div>
 
                                 {{-- Phone --}}
                                 <div class="col-md-12 form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                    <label>Phone Number :</label>
+                                    <label>No. Telpon</label>
                                     <input type="" class="form-control" name="phone" placeholder="e.g. 08123456789">
                                     {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                                 </div>
 
                                 {{-- Birthdate --}}
                                 <div class="col-md-6 form-group{{ $errors->has('birthdate') ? ' has-error' : '' }}">
-                                    <label for="">Birth Date :</label>
+                                    <label for="">Tanggal Lahir</label>
                                     <div class="input-group date">
                                         <div class="input-group-addon">
                                             <i class="fas fa-calendar"></i>
@@ -69,7 +69,7 @@
 
                                 {{-- Gender --}}
                                 <div class="col-md-6 form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                                    <label>Gender :</label>
+                                    <label>Jenis Kelamin</label>
                                     <select name="gender" class="form-control">
                                         <option selected disabled>Choose gender</option>
                                         <option value="laki-laki">Laki-Laki</option>
@@ -80,7 +80,7 @@
 
                                 {{-- Address --}}
                                 <div class="col-md-12 form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                    <label>Address :</label>
+                                    <label>Alamat</label>
                                     <textarea class="form-control" name="address" rows="3" cols="80" placeholder="e.g. JL. Jalan"></textarea>
                                     {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
                                 </div>
@@ -88,7 +88,7 @@
                                 {{-- role --}}
                                 <div class="col-md-12">
                                     <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                                        <label>Job Role :</label>
+                                        <label>Posisi</label>
                                         <select name="role" id="role" class="form-control" onchange="run()">
                                             <option selected disabled>Choose job role</option>
                                             @role('owner')
@@ -101,24 +101,10 @@
                                     </div>
                                 </div>
 
-                                {{-- Store ID --}}
-                                <div class="col-md-12" id="storeForm">
-                                    <div class="form-group{{ $errors->has('store') ? ' has-error' : '' }}">
-                                        <label>Store :</label>
-                                        <select name="store" class="form-control">
-                                            <option selected disabled>Choose store</option>
-                                            @foreach ($store as $item)
-                                                <option value="{{ $item->id }}">{{ $item->store_name }}</option>
-                                            @endforeach
-                                        </select>
-                                        {!! $errors->first('store', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-
                                 {{-- Password --}}
                                 <div class="col-md-12">
                                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <label>Password :</label>
+                                        <label>Password</label>
                                         <div class="input-group">
                                             <input type="password" class="form-control" id="password" name="password" placeholder="Masukan password">
                                             <span class="input-group-btn">
@@ -130,7 +116,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn bg-green pull-right">Submit</button>
+                                    <button type="submit" class="btn bg-green pull-right">Tambah</button>
                                 </div>
                             </form>
                         </div>

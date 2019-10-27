@@ -9,8 +9,8 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li><a href="{{ route('product.index') }}"><i class="fas fa-shopping-bag"></i>Product</a></li>
-                <li class="active"><a href="{{ route('product.show', $data->id) }}">Show</a></li>
+                <li><a href="{{ route('product.index') }}"><i class="fas fa-shopping-bag"></i>Produk</a></li>
+                <li class="active"><a href="{{ route('product.show', $data->id) }}">Lihat</a></li>
             </ol>
         </section>
 
@@ -23,12 +23,12 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>Product Information</b>
+                            <b>Informasi Produk</b>
                         </div>
                         <div class="panel-body">
 
                             {{-- Nama --}}
-                            <p>Name<span class="badge bgc-green pull-right">{{ $data->product_name }}</span></p>
+                            <p>Nama<span class="badge bgc-green pull-right">{{ $data->product_name }}</span></p>
                         </div>
                     </div>
                 </div>

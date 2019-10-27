@@ -10,8 +10,8 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li><a href="{{ route('employee.index') }}"><i class="fas fa-user-circle"></i>Employee</a></li>
-                <li class="active"><a href="{{ route('employee.edit', $user->id) }}">Edit</a></li>
+                <li><a href="{{ route('employee.index') }}"><i class="fas fa-user-circle"></i>Karyawan</a></li>
+                <li class="active"><a href="{{ route('employee.edit', $user->id) }}">Ubah</a></li>
             </ol>
         </section>
 
@@ -25,7 +25,7 @@
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>Employee Information</b>
+                            <b>Informasi Karyawan</b>
                         </div>
                         <div class="panel-body">
 
@@ -38,28 +38,28 @@
 
                                         {{-- Nama --}}
                                         <div class="col-md-12 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                            <label>Name :</label>
+                                            <label>Nama</label>
                                             <input type="text" class="form-control" name="name" placeholder="e.g. John Doe" value="{{ $user->name }}">
                                             {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                                         </div>
         
                                         {{-- Email --}}
                                         <div class="col-md-12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                            <label>Email :</label>
+                                            <label>Email</label>
                                             <input type="" class="form-control" name="email" placeholder="e.g. john.doe@gmail.com" value="{{ $user->email }}">
                                             {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                                         </div>
         
                                         {{-- Phone --}}
                                         <div class="col-md-12 form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                            <label>Phone Number :</label>
+                                            <label>No. Telpon</label>
                                             <input type="" class="form-control" name="phone" placeholder="e.g. 08123456789" value="{{ $user->phone }}">
                                             {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                                         </div>
         
                                         {{-- Birthdate --}}
                                         <div class="col-md-6 form-group{{ $errors->has('birthdate') ? ' has-error' : '' }}">
-                                            <label for="">Birth Date :</label>
+                                            <label for="">Tanggal Lahir</label>
                                             <div class="input-group date">
                                                 <div class="input-group-addon">
                                                     <i class="fas fa-calendar"></i>
@@ -72,7 +72,7 @@
         
                                         {{-- Gender --}}
                                         <div class="col-md-6 form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                                            <label>Gender :</label>
+                                            <label>Jenis Kelamin</label>
                                             <select name="gender" class="form-control">
                                                 <option selected disabled>Choose gender</option>
                                                 <option {{ $user->gender == 'laki-laki' ? 'selected' : '' }} value="laki-laki">Laki-Laki</option>
@@ -83,7 +83,7 @@
         
                                         {{-- Address --}}
                                         <div class="col-md-12 form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                            <label>Address :</label>
+                                            <label>Alamat</label>
                                             <textarea class="form-control" name="address" rows="3" cols="80" placeholder="e.g. JL. Jalan">{{ $user->address }}</textarea>
                                             {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
                                         </div>
@@ -91,7 +91,7 @@
                                         {{-- role --}}
                                         <div class="col-md-12">
                                             <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                                                <label>Job Role :</label>
+                                                <label>Posisi</label>
                                                 <select name="role" id="role" class="form-control" onchange="run()">
                                                     <option selected disabled>Choose job role</option>
                                                     @role('owner')
@@ -101,24 +101,6 @@
                                                     <option {{ $user->role_id == 3 ? 'selected' : '' }} value="3">Member</option>
                                                 </select>
                                                 {!! $errors->first('role', '<p class="help-block">:message</p>') !!}
-                                            </div>
-                                        </div>
-        
-                                        {{-- Store ID --}}
-                                        <div class="col-md-12" id="storeForm">
-                                            <div class="form-group{{ $errors->has('store') ? ' has-error' : '' }}">
-                                                <label>Store :</label>
-                                                <select name="store" class="form-control">
-                                                    <option selected disabled>Choose store</option>
-                                                    @foreach ($store as $item)
-                                                        @if ($item->id == $user->stores_id)
-                                                            <option selected value="{{ $item->id }}">{{ $item->store_name }}</option>    
-                                                        @else
-                                                            <option value="{{ $item->id }}">{{ $item->store_name }}</option>
-                                                        @endif
-                                                    @endforeach
-                                                </select>
-                                                {!! $errors->first('store', '<p class="help-block">:message</p>') !!}
                                             </div>
                                         </div>
         
@@ -137,7 +119,7 @@
                                         </div> --}}
 
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn bg-green pull-right">Submit</button>
+                                            <button type="submit" class="btn bg-green pull-right">Ubah</button>
                                         </div>
                                     </div>
                                 </div>

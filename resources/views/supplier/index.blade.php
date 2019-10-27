@@ -12,7 +12,7 @@
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
                 <li class="active"><a href="{{ route('supplier.index') }}"><i class="fas fa-user-friends fa-sm"></i>Supplier</a></li>
-                <a href="{{ route('supplier.create') }}" style="position:relative;top:-6px;" class="btn btn-sm bgc-green pull-right"><i class="fas fa-plus-circle" style="margin-right:10px;"></i>Add Supplier</a>
+                <a href="{{ route('supplier.create') }}" style="position:relative;top:-6px;" class="btn btn-sm bgc-green pull-right"><i class="fas fa-plus-circle" style="margin-right:10px;"></i>Tambah Supplier</a>
             </ol>
         </section>
 
@@ -26,15 +26,15 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>List Supplier</b>
+                            <b>Daftar Supplier</b>
                         </div>
                         <div class="panel-body">
                             <table class="table table-responsive table-bordered table-striped" style="width:100%;" id="table-supplier">
                                 <thead>
                                     <tr>
                                         <th style="width:30px;">No</th>
-                                        <th>Name</th>
-                                        <th>Phone</th>
+                                        <th>Nama</th>
+                                        <th>No. Telpon</th>
                                         <th style="width:30px;"></th>
                                     </tr>
                                 </thead>

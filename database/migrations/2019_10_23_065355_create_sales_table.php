@@ -22,13 +22,11 @@ class CreateSalesTable extends Migration
             $table->string('total_product');
             $table->unsignedBigInteger('customers_id');
             $table->unsignedBigInteger('users_id');
-            $table->unsignedBigInteger('stores_id');
             $table->string('status');
             $table->timestamps();
 
             $table->foreign('customers_id')->references('id')->on('customers');
             $table->foreign('users_id')->references('id')->on('users');
-            $table->foreign('stores_id')->references('id')->on('stores');
         });
     }
 

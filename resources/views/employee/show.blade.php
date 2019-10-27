@@ -9,8 +9,8 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li><a href="{{ route('employee.index') }}"><i class="fas fa-user-circle"></i>Employee</a></li>
-                <li class="active"><a href="{{ route('employee.show', $data->id) }}">Show</a></li>
+                <li><a href="{{ route('employee.index') }}"><i class="fas fa-user-circle"></i>Karyawan</a></li>
+                <li class="active"><a href="{{ route('employee.show', $data->id) }}">Lihat</a></li>
             </ol>
         </section>
 
@@ -23,60 +23,18 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>Employee Information</b>
+                            <b>Informasi Karyawan</b>
                         </div>
                         <div class="panel-body">
 
                             {{-- Nama --}}
-                            <p>Name<span class="badge bgc-green pull-right">{{ $data->name }}</span></p>
+                            <p>Nama<span class="badge bgc-green pull-right">{{ $data->name }}</span></p>
 
                             {{-- Phone --}}
-                            <p>Phone Number<span class="badge bgc-green pull-right">{{ $data->phone }}</span></p>
+                            <p>No. Telpon<span class="badge bgc-green pull-right">{{ $data->phone }}</span></p>
 
                             {{-- Address --}}
-                            <p>Address<span class="badge bgc-green pull-right">{{ $data->address }}</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- reseller --}}
-            <div class="row">
-
-                <div class="col-md-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <b>Reseller Information</b>
-                        </div>
-                        <div class="panel-body">
-
-                            {{-- Nama --}}
-                            <p>Name<span class="badge bgc-green pull-right">{{ $data->name }}</span></p>
-
-                            {{-- Phone --}}
-                            <p>Phone Number<span class="badge bgc-green pull-right">{{ $data->phone }}</span></p>
-
-                            {{-- Address --}}
-                            <p>Address<span class="badge bgc-green pull-right">{{ $data->address }}</span></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <b>Reseller Information</b>
-                        </div>
-                        <div class="panel-body">
-
-                            {{-- Nama --}}
-                            <p>Name<span class="badge bgc-green pull-right">{{ $data->name }}</span></p>
-
-                            {{-- Phone --}}
-                            <p>Phone Number<span class="badge bgc-green pull-right">{{ $data->phone }}</span></p>
-
-                            {{-- Address --}}
-                            <p>Address<span class="badge bgc-green pull-right">{{ $data->address }}</span></p>
+                            <p>Alamat<span class="badge bgc-green pull-right">{{ $data->address }}</span></p>
                         </div>
                     </div>
                 </div>

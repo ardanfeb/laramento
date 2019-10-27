@@ -11,31 +11,29 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li class="active"><a href="{{ route('store.index') }}"><i class="fas fa-store-alt fa-sm"></i>Store</a></li>
-                <a href="{{ route('store.create') }}" style="position:relative;top:-6px;" class="btn btn-sm bgc-green pull-right"><i class="fas fa-plus-circle" style="margin-right:10px;"></i>Add Store</a>
+                <li><a href="{{ route('inventory.index') }}"><i class="fas fa-boxes"></i>Inventori</a></li>
+                <li class="active"><a href="{{ route('inventory.stock_in') }}">Stok Masuk</a></li>
+                <a href="{{ route('inventory.stock_in.create') }}" style="position:relative;top:-6px;" class="btn btn-sm bgc-green pull-right"><i class="fas fa-plus-circle" style="margin-right:10px;"></i>Tambah Stok Masuk</a>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content container-fluid">
-
-            {{-- Store --}}
             <div class="row">
 
-                {{-- List of Store --}}
+                {{--  Stock In --}}
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>List Store</b>
+                            <b>Stok Masuk</b>
                         </div>
                         <div class="panel-body">
-                            <table class="table table-responsive table-bordered table-striped" style="width:100%;" id="table-store">
+                            <table class="table table-responsive table-bordered table-striped" style="width:100%;" id="table-stokin">
                                 <thead>
                                     <tr>
-                                        <th style="width:30px;">No</th>
-                                        <th>Store Name</th>
-                                        <th>Phone</th>
-                                        <th>Type</th>
+                                        <th>ID Stok Masuk</th>
+                                        <th>Oleh</th>
+                                        <th style="width:150px;">Tanggal</th>
                                         <th style="width:30px;"></th>
                                     </tr>
                                 </thead>
@@ -43,9 +41,9 @@
                         </div>
                     </div>
                 </div>
+                
 
             </div>
-            
         </section>
     </div>
 @endsection
@@ -56,15 +54,14 @@
     <script type="text/javascript" src="{{ asset('bower_components/datatables.net-bs/js/dataTables.responsive.min.js') }}"></script>
     
     <script type="text/javascript">
-        $('#table-store').DataTable({
+        $('#table-stokin').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ route('store.data') }}',
+            ajax: '{{ route('inventory.stock_in.data') }}',
             columns: [
-                { data: 'rownum', name: 'rownum' },
-                { data: 'store_name', name: 'store_name' },
-                { data: 'phone', name: 'phone' },
-                { data: 'store_type', name: 'store_type' },
+                { data: 'code', name: 'code' },
+                { data: 'input_by', name: 'input_by' },
+                { data: 'created_at', name: 'created_at' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ],
             iDisplayLength: 10,
@@ -74,6 +71,7 @@
             ],
             scrollCollapse: true,
             paging: true,
+            order: [2, "desc"]
         });
     </script>
 @endsection
