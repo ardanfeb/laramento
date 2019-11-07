@@ -17,8 +17,8 @@
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
                 <li><a href="{{ route('inventory.index') }}"><i class="fas fa-boxes"></i>Inventori</a></li>
-                <li><a href="{{ route('inventory.stock_in') }}">Stok Masuk</a></li>
-                <li class="active"><a href="{{ route('inventory.stock_in.show', $stock->id) }}">{{ $stock->code }}</a></li>
+                <li><a href="{{ route('inventory.stock_out') }}">Stok Keluar</a></li>
+                <li class="active"><a href="{{ route('inventory.stock_out.show', $stock->id) }}">{{ $stock->code }}</a></li>
                 <a id="print" href="#" onclick="print()" style="position:relative;top:-6px;" class="btn btn-sm bgc-green pull-right"><i class="fas fa-print" style="margin-right:10px;"></i>Print</a>
             </ol>               
         </section>
@@ -41,30 +41,30 @@
                                         <th style="width:30px;">No</th>
                                         <th>Nama Produk</th>
                                         <th>Jumlah</th>
-                                        <th>Harga Beli</th>
-                                        <th>Total</th>
+                                        {{-- <th>Harga Beli</th> --}}
+                                        {{-- <th>Total</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
                                         $no = 1;
-                                        $total_final = 0;
+                                        // $total_final = 0;
                                     @endphp
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->product_name }} - {{ $item->label_name }}</td>
                                             <td>{{ $item->qty }}</td>
-                                            <td>Rp. {{ $item->price_buy }}</td>
-                                            <td>Rp. {{ $item->price_buy * $item->qty }}</td>
+                                            {{-- <td>Rp. {{ $item->price_buy }}</td> --}}
+                                            {{-- <td>Rp. {{ $item->price_buy * $item->qty }}</td> --}}
                                         </tr>
-                                        @php
+                                        {{-- @php
                                             $total_final += $item->price_buy * $item->qty;
-                                        @endphp
+                                        @endphp --}}
                                     @endforeach
                                 </tbody>
                             </table>
-                            <b class="pull-right">Total Biaya Dikeluarkan: <span class="badge bgc-green" style="margin-left:5px;">Rp. {{ $total_final }}</span></b>
+                            {{-- <b class="pull-right">Total Biaya Masuk: <span class="badge bgc-green" style="margin-left:5px;">Rp. {{ $total_final }}</span></b> --}}
                         </div>
                     </div>
                 </div>

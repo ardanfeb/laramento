@@ -134,7 +134,6 @@ class EmployeeController extends Controller
             ->leftJoin('role_user', 'users.id', '=', 'role_user.user_id')
             ->leftJoin('roles', 'role_user.role_id', '=', 'roles.id')
             ->select(['users.*', 'roles.display_name as role'])
-            ->whereNotIn('roles.id', [1])
             ->get();
 
         return Datatables::of($employee)
@@ -147,7 +146,18 @@ class EmployeeController extends Controller
                 ]);
             })
             ->editColumn('role', function($employee){
-                return '<span class="badge bgc-'. ($employee->role == 'Employee' ? 'green' : 'blue') .'">'. ($employee->role == 'Employee' ? 'Karyawan' : 'Reseller') .'</span>';
+                if ($employee->role == 'Owner') {
+                    $color = 'orange';
+                    $pos = 'Pemilik';
+                } else if ($employee->role == 'Employee') {
+                    $color = 'green';
+                    $pos = 'Karyawan';
+                } else {
+                    $color = 'blue';
+                    $pos = 'Reseller';
+                }
+                
+                return '<span class="badge bgc-'. $color .'">'. $pos .'</span>';
             })
             ->rawColumns(['action', 'role'])
             ->make(true);

@@ -33,6 +33,10 @@ Route::get('/inventory/purchase_order', 'InventoryController@purchase_order')->n
 Route::get('/inventory/stock_opname', 'InventoryController@stock_opname')->name('inventory.stock_opname');
 // Stock Out
 Route::get('/inventory/stock_out', 'InventoryController@stock_out')->name('inventory.stock_out');
+Route::post('/inventory/stock_out/', 'InventoryController@stock_out_store')->name('inventory.stock_out.store');
+Route::get('/inventory/stock_out/create', 'InventoryController@stock_out_create')->name('inventory.stock_out.create');
+Route::get('/inventory/stock_out/{id}', 'InventoryController@stock_out_show')->name('inventory.stock_out.show');
+Route::get('/inventory/stock_out_data', 'InventoryController@stock_out_data')->name('inventory.stock_out.data');
 // Stock In
 Route::get('/inventory/stock_in', 'InventoryController@stock_in')->name('inventory.stock_in');
 Route::post('/inventory/stock_in/', 'InventoryController@stock_in_store')->name('inventory.stock_in.store');

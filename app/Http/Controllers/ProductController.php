@@ -82,13 +82,16 @@ class ProductController extends Controller
     public function show($id)
     {
         $data = Product::find($id);
+
         return view('product.show', compact('data'));
     }
 
     public function edit($id)
     {
         $category = DB::table('categories')->select('id', 'category_name')->get();
+
         $label = DB::table('labels')->select('id', 'label_name')->get();
+
         $product = Product::find($id);
 
         $data = array(
@@ -144,10 +147,13 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+
         $filepath = "img/product/". $product->img;
+
         if (file_exists($filepath)) {
             @unlink($filepath);
         }
+
         $product->delete();
 
         return redirect()->route('product.index')->with([
@@ -230,6 +236,7 @@ class ProductController extends Controller
     public function destroy_category($id)
     {
         DB::table('categories')->where('id', $id)->delete();
+
         return redirect()->route('product.index');
     }
 
@@ -273,6 +280,7 @@ class ProductController extends Controller
     public function destroy_label($id)
     {
         DB::table('labels')->where('id', $id)->delete();
+        
         return redirect()->route('product.index');
     }
 

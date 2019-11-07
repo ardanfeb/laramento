@@ -62,7 +62,11 @@
             columns: [
                 { data: 'product_name', name: 'product_name' },
                 { data: 'category_name', name: 'category_name' },
-                { data: 'qty', name: 'qty' },
+                { data: 'stok_akhir', name: 'stok_akhir' },
+                { data: 'stok_akhir', name: 'stok_akhir' },
+                { data: 'stok_akhir', name: 'stok_akhir' },
+                { data: 'stok_akhir', name: 'stok_akhir' },
+                { data: 'stok_akhir', name: 'stok_akhir' },
             ],
             iDisplayLength: 10,
             aLengthMenu: [

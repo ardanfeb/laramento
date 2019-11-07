@@ -131,16 +131,13 @@
                         <div class="pull-left info">
                             <p>{{ Auth::user()->name }}</p>
                             @role('owner')
-                                <p><span class="label bgc-green">Owner</span></p>
+                                <p><span class="label bgc-orange">Owner</span></p>
                             @endrole
                             @role('employee')
-                                <p><span class="label bgc-orange">Karyawan</span></p>
+                                <p><span class="label bgc-green">Karyawan</span></p>
                             @endrole
                             @role('reseller')
                                 <p><span class="label bgc-blue">Reseller</span></p>
-                            @endrole
-                            @role('guest')
-                                <p><span class="label bgc-blue">Tamu</span></p>
                             @endrole
                         </div>
                     </div>

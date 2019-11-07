@@ -112,7 +112,7 @@
                                 {{-- Note --}}
                                 <div class="col-md-12 form-group{{ $errors->has('note') ? ' has-error' : '' }}">
                                     <label>Catatan</label>
-                                    <textarea class="form-control textarea" name="note" rows="10" cols="30" placeholder="e.g. Barcode"></textarea>
+                                    <textarea class="form-control textarea" name="note" rows="10" cols="30" placeholder="e.g. Catatan"></textarea>
                                     {!! $errors->first('note', '<p class="help-block">:message</p>') !!}
                                 </div>
 

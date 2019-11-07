@@ -22,7 +22,8 @@
 
 <li class="treeview {{ set_active([
         'inventory.index', 'inventory.stock_out', 'inventory.stock_opname', 'inventory.purchase_order', 
-        'inventory.stock_in', 'inventory.stock_in.show', 'inventory.stock_in.create'
+        'inventory.stock_in', 'inventory.stock_in.show', 'inventory.stock_in.create',
+        'inventory.stock_out', 'inventory.stock_out.show', 'inventory.stock_out.create'
     ]) }}">
     <a href="#"><i class="fas fa-boxes fa-sm"></i><span>Inventori</span>
         <span class="pull-right-container">
@@ -32,7 +33,7 @@
     <ul class="treeview-menu" style="padding:7px;padding-left:5px;">
         <li class="{{ set_active(['inventory.index']) }}"><a href="{{ route('inventory.index') }}"><span>Stok</span></a></li>
         <li class="{{ set_active(['inventory.stock_in', 'inventory.stock_in.show', 'inventory.stock_in.create']) }}"><a href="{{ route('inventory.stock_in') }}"><span>Stok Masuk</span></a></li>
-        <li class="{{ set_active(['inventory.stock_out']) }}"><a href="{{ route('inventory.stock_out') }}"><span>Stok Keluar</span></a></li>
+        <li class="{{ set_active(['inventory.stock_out', 'inventory.stock_out.show', 'inventory.stock_out.create']) }}"><a href="{{ route('inventory.stock_out') }}"><span>Stok Keluar</span></a></li>
         <li class="{{ set_active(['inventory.stock_opname']) }}"><a href="{{ route('inventory.stock_opname') }}"><span>Stok Opname</span></a></li>
         <li class="{{ set_active(['inventory.purchase_order']) }}"><a href="{{ route('inventory.purchase_order') }}"><span>Purchase Order</span></a></li>
     </ul>
