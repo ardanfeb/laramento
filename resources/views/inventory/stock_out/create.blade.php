@@ -157,7 +157,7 @@
                 // }
                 table+="<tr>";
                 table+="<td>"+ (no+=1) +"</td>";
-                table+="<td>"+product[i].value+"</td>";
+                table+="<td>"+product[i].options[product[i].selectedIndex].innerHTML+"</td>";
                 table+="<td>"+qty[i].value+"</td>";
                 // table+="<td> Rp. "+price_buy[i].value+"</td>";
                 // table+="<td> Rp. "+price_buy[i].value * qty[i].value+"</td>";
