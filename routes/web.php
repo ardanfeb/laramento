@@ -29,6 +29,12 @@ Route::resource('/sales', 'SalesController');
 // INVENTORY
 // Purchase Order
 Route::get('/inventory/purchase_order', 'InventoryController@purchase_order')->name('inventory.purchase_order');
+Route::get('/inventory/purchase_order/{id}/{status}', 'InventoryController@purchase_order_status')->name('inventory.purchase_order.status');
+Route::post('/inventory/purchase_order/', 'InventoryController@purchase_order_store')->name('inventory.purchase_order.store');
+Route::get('/inventory/purchase_order/create', 'InventoryController@purchase_order_create')->name('inventory.purchase_order.create');
+Route::get('/inventory/purchase_order/{id}', 'InventoryController@purchase_order_show')->name('inventory.purchase_order.show');
+Route::delete('/inventory/purchase_order/{id}', 'InventoryController@purchase_order_destroy')->name('inventory.purchase_order.destroy');
+Route::get('/inventory/purchase_order_data', 'InventoryController@purchase_order_data')->name('inventory.purchase_order.data');
 // Stock Opname
 Route::get('/inventory/stock_opname', 'InventoryController@stock_opname')->name('inventory.stock_opname');
 // Stock Out
