@@ -358,6 +358,18 @@ class InventoryController extends Controller {
                 'updated_at' => Carbon::now(),
             ]);
 
+        $item = DB::table('purchase_order_items')->where('po_id', $id)->get();
+
+        if ($status == 'complete') {
+            foreach ($item as $row) {
+                DB::table('inventories')->where('products_id', $row->products_id)->increment('qty', $row->qty);
+            }
+        } else {
+            foreach ($item as $row) {
+                DB::table('inventories')->where('products_id', $row->products_id)->decrement('qty', $row->qty);
+            }
+        }
+
         return redirect()->route('inventory.purchase_order');
     }
 
