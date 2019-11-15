@@ -24,6 +24,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 Route::resource('/report', 'ReportController');
 
 // SALES
+Route::get('/sales/data', 'SalesController@data')->name('sales.data');
 Route::resource('/sales', 'SalesController');
 
 // INVENTORY
