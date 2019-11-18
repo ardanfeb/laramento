@@ -70,29 +70,40 @@
                                     </div>
 
                                     {{-- Form Non Register Pelanggan --}}
-                                    <div id="notregPelangganForm" class="col-md-12 form-group{{ $errors->has('customer') ? ' has-error' : '' }}">
-                                        <label>Pelanggan Belum Terdaftar</label>
-                                        <select name="customer" class="form-control select2">
-                                            <option selected disabled>Pilih pelanggan</option>
+                                    <div id="notregPelangganForm" class="col-md-12">
+                                        <div class="row">
+
+                                            {{-- Nama --}}
+                                            <div class="col-md-12 form-group">
+                                                <label>Nama Pelanggan</label>
+                                                <input type="text" class="form-control" name="customer_name" placeholder="e.g. John Doe">
+                                            </div>
                                             
-                                            @foreach ($customer as $item)
-                                                <option value="{{ $item->id }}">{{ $item->customer_name }}</option>
-                                            @endforeach
-                                        </select>
-                                        {!! $errors->first('customer', '<p class="help-block">:message</p>') !!}
+                                            {{-- Telpon --}}
+                                            <div class="col-md-12 form-group">
+                                                <label>Telpon</label>
+                                                <input type="text" class="form-control" name="customer_phone" placeholder="e.g. 080989999">
+                                            </div>
+                                                
+                                            {{-- Alamat --}}
+                                            <div class="col-md-12 form-group">
+                                                <label>Alamat</label>
+                                                <input type="text" class="form-control" name="customer_address" placeholder="e.g. Jl. Jalan">
+                                            </div>
+                                        </div>
                                     </div>
 
                                     {{-- Form Reseller --}}
-                                    <div id="resellerForm" class="col-md-12 form-group{{ $errors->has('customer') ? ' has-error' : '' }}">
+                                    <div id="resellerForm" class="col-md-12 form-group{{ $errors->has('reseller') ? ' has-error' : '' }}">
                                         <label>Reseller</label>
-                                        <select name="customer" class="form-control select2">
-                                            <option selected disabled>Pilih pelanggan</option>
+                                        <select name="reseller" class="form-control select2">
+                                            <option selected disabled>Pilih reseller</option>
                                             
-                                            @foreach ($customer as $item)
-                                                <option value="{{ $item->id }}">{{ $item->customer_name }}</option>
+                                            @foreach ($reseller as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
-                                        {!! $errors->first('customer', '<p class="help-block">:message</p>') !!}
+                                        {!! $errors->first('reseller', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
 
@@ -262,7 +273,7 @@
             } else if(tipe_pelanggan == "2") {
                 $('#regPelanggaForm').hide();
                 $('#resellerForm').hide();
-                $('#notregPelangganForm').slideDown(500);
+                $('#notregPelangganForm').slideDown(1000);
             } else {
                 $('#regPelanggaForm').hide();
                 $('#notregPelangganForm').hide();

@@ -27,9 +27,15 @@ class SalesController extends Controller
             ->join('labels', 'labels.id', '=', 'products.labels_id')
             ->get();
 
+        $reseller = DB::table('users')
+            ->join('role_user', 'role_user.user_id', '=', 'users.id')
+            ->where('role_user.role_id', 3)
+            ->get();
+
         $data = array(
             'customer' => DB::table('customers')->get(),
             'product' => $product,
+            'reseller' => $reseller,
         );
 
         return view('sales.create', $data);
