@@ -22,7 +22,17 @@ class SalesController extends Controller
 
     public function create()
     {
-        //
+        $product = DB::table('products')
+            ->select('products.id', 'products.product_name', 'labels.label_name')
+            ->join('labels', 'labels.id', '=', 'products.labels_id')
+            ->get();
+
+        $data = array(
+            'customer' => DB::table('customers')->get(),
+            'product' => $product,
+        );
+
+        return view('sales.create', $data);
     }
 
     public function store(Request $request)

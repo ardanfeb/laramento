@@ -12,8 +12,8 @@
         {{-- Title + Breadcrumb --}}
         <section class="content-header container-fluid">
             <ol class="breadcrumb">
-                <li><a href="{{ route('product.index') }}"><i class="fas fa-shopping-bag"></i>Produk</a></li>
-                <li class="active"><a href="{{ route('product.create') }}">Tambah</a></li>
+                    <li class="active"><a href="{{ route('sales.index') }}"><i class="fas fa-cash-register"></i>Penjualan</a></li>
+                <li class="active"><a href="{{ route('sales.create') }}">Tambah</a></li>
             </ol>
         </section>
 
@@ -23,110 +23,210 @@
             {{-- Store --}}
             <div class="row">
 
-                {{-- List of Store --}}
-                <div class="col-md-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <b>Informasi Produk</b>
-                        </div>
-                        <div class="panel-body row">
+                {{-- Form add store --}}
+                <form action="{{ route('sales.store') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
 
-                            {{-- Form add store --}}
-                            <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
-                                {{ csrf_field() }}
+                    {{-- Informasi Penjualan --}}
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Informasi Penjualan</b>
+                            </div>
+                            <div class="panel-body row">
 
-                                {{-- Nama --}}
-                                <div class="col-md-12 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label>Nama Produk <b class="txtc-red">*</b></label>
-                                    <input type="text" class="form-control" name="name" placeholder="e.g. Gildan Blue Stripe">
-                                    {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
-                                </div>
+                                {{-- Info Pembeli --}}
+                                <div class="pembeli">
 
-                                {{-- Price buy --}}
-                                <div class="col-md-6 form-group{{ $errors->has('price_buy') ? ' has-error' : '' }}">
-                                    <label>Harga Beli <b class="txtc-red">*</b></label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Rp</span>
-                                        <input type="text" class="form-control" name="price_buy" placeholder="e.g. 20000">
+                                    {{-- Title --}}
+                                    <div class="col-md-12">
+                                        <i class="txtc-blue"><span class="fas fa-align-left" style="margin-right:13px;"></span><b>Pelanggan</b></i>
+                                        <hr style="margin-top:5px;">
                                     </div>
-                                    {!! $errors->first('price_buy', '<p class="help-block">:message</p>') !!}
-                                </div>
 
-                                {{-- Price Sell --}}
-                                <div class="col-md-6 form-group{{ $errors->has('price_sell') ? ' has-error' : '' }}">
-                                    <label>Harga Jual <b class="txtc-red">*</b></label>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Rp</span>
-                                        <input type="text" class="form-control" name="price_sell" placeholder="e.g. 30000">
+                                    {{-- Jenis Pelanggan --}}
+                                    <div class="col-md-12 form-group{{ $errors->has('customer') ? ' has-error' : '' }}">
+                                        <label>Tipe Pelanggan</label>
+                                        <select name="customer_type" id="customer_type" class="form-control select2" onchange="customerType()">
+                                            <option selected disabled>Pilih tipe pelanggan</option>
+                                            <option value="1">Pelanggan Terdaftar</option>
+                                            <option value="2">Pelanggan Belum Terdaftar</option>
+                                            <option value="3">Reseller</option>
+                                        </select>
+                                        {!! $errors->first('customer_type', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    {!! $errors->first('price_sell', '<p class="help-block">:message</p>') !!}
+
+                                    {{-- Form Register Pelanggan --}}
+                                    <div id="regPelanggaForm" class="col-md-12 form-group{{ $errors->has('customer') ? ' has-error' : '' }}">
+                                        <label>Pelanggan</label>
+                                        <select name="customer" class="form-control select2">
+                                            <option selected disabled>Pilih pelanggan</option>
+                                            
+                                            @foreach ($customer as $item)
+                                                <option value="{{ $item->id }}">{{ $item->customer_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        {!! $errors->first('customer', '<p class="help-block">:message</p>') !!}
+                                    </div>
+
+                                    {{-- Form Non Register Pelanggan --}}
+                                    <div id="notregPelangganForm" class="col-md-12 form-group{{ $errors->has('customer') ? ' has-error' : '' }}">
+                                        <label>Pelanggan Belum Terdaftar</label>
+                                        <select name="customer" class="form-control select2">
+                                            <option selected disabled>Pilih pelanggan</option>
+                                            
+                                            @foreach ($customer as $item)
+                                                <option value="{{ $item->id }}">{{ $item->customer_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        {!! $errors->first('customer', '<p class="help-block">:message</p>') !!}
+                                    </div>
+
+                                    {{-- Form Reseller --}}
+                                    <div id="resellerForm" class="col-md-12 form-group{{ $errors->has('customer') ? ' has-error' : '' }}">
+                                        <label>Reseller</label>
+                                        <select name="customer" class="form-control select2">
+                                            <option selected disabled>Pilih pelanggan</option>
+                                            
+                                            @foreach ($customer as $item)
+                                                <option value="{{ $item->id }}">{{ $item->customer_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        {!! $errors->first('customer', '<p class="help-block">:message</p>') !!}
+                                    </div>
                                 </div>
 
-                                {{-- Category --}}
-                                <div class="col-md-6 form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                                    <label>Kategori</label>
-                                    <select name="category" class="form-control select2">
-                                        <option selected disabled>Pilih kategori</option>
-                                        
-                                        @foreach ($category as $item)
-                                            <option value="{{ $item->id }}">{{ $item->category_name }}</option>
-                                        @endforeach
-                                    </select>
-                                    {!! $errors->first('category', '<p class="help-block">:message</p>') !!}
+                                {{-- Detail Pembelian --}}
+                                <div class="detail-pembelian">
+
+                                    {{-- Title --}}
+                                    <div class="col-md-12" style="margin-top:20px;">
+                                        <i class="txtc-blue"><span class="fas fa-align-left" style="margin-right:13px;"></span><b>Detail Pembelian</b></i>
+                                        <hr style="margin-top:5px;">
+                                    </div>
+
+                                    {{-- Invoice --}}
+                                    <div class="col-md-12 form-group{{ $errors->has('invoice') ? ' has-error' : '' }}">
+                                        <label>Invoice <b class="txtc-red">*</b></label>
+                                        <input type="text" class="form-control" name="invoice" placeholder="e.g. INV0001">
+                                        {!! $errors->first('invoice', '<p class="help-block">:message</p>') !!}
+                                    </div>
+    
+                                    {{-- Resi --}}
+                                    <div class="col-md-12 form-group{{ $errors->has('resi') ? ' has-error' : '' }}">
+                                        <label>Resi <b class="txtc-red">*</b></label>
+                                        <input type="text" class="form-control" name="resi" placeholder="e.g. RESI0001">
+                                        {!! $errors->first('resi', '<p class="help-block">:message</p>') !!}
+                                    </div>
+    
+                                    {{-- Ekspedisi --}}
+                                    <div class="col-md-12 form-group{{ $errors->has('ekspedisi') ? ' has-error' : '' }}">
+                                        <label>Ekspedisi <b class="txtc-red">*</b></label>
+                                        <select name="ekspedisi" class="form-control select2" onchange="customerType()">
+                                            <option selected disabled>Pilih ekspedisi</option>
+                                            <option value="JNE">JNE</option>
+                                            <option value="TIKI">TIKI</option>
+                                            <option value="POS">POS</option>
+                                            <option value="J&T">J&T</option>
+                                            <option value="NinjaExpress">NinjaExpress</option>
+                                            <option value="GOJEK/Grab">GOJEK/Grab</option>
+                                        </select>
+                                        {!! $errors->first('ekspedisi', '<p class="help-block">:message</p>') !!}
+                                    </div>
+    
+                                    {{-- Ongkir --}}
+                                    <div class="col-md-6 form-group{{ $errors->has('ongkir') ? ' has-error' : '' }}">
+                                        <label>Ongkos Kirim <b class="txtc-red">*</b></label>
+                                        <input type="text" class="form-control" name="ongkir" placeholder="e.g. 20000">
+                                        {!! $errors->first('ongkir', '<p class="help-block">:message</p>') !!}
+                                    </div>
+    
+                                    {{-- Status --}}
+                                    <div class="col-md-6 form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                                        <label>Status</label>
+                                        <select name="status" class="form-control select2">
+                                            <option selected disabled>Pilih status</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Sukses">Sukses</option>
+                                        </select>
+                                        {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
+                                    </div>
                                 </div>
 
-                                {{-- Label --}}
-                                <div class="col-md-6 form-group{{ $errors->has('label') ? ' has-error' : '' }}">
-                                    <label>Label</label>
-                                    <select name="label" class="form-control select2">
-                                        <option selected disabled>Pilih label</option>
-                                        
-                                        @foreach ($label as $item)
-                                            <option value="{{ $item->id }}">{{ $item->label_name }}</option>
-                                        @endforeach
-                                    </select>
-                                    {!! $errors->first('label', '<p class="help-block">:message</p>') !!}
-                                </div>
-
-                                {{-- SKU --}}
-                                <div class="col-md-6 form-group{{ $errors->has('sku') ? ' has-error' : '' }}">
-                                    <label>SKU</label>
-                                    <input type="text" class="form-control" name="sku" placeholder="e.g. SKU">
-                                    {!! $errors->first('sku', '<p class="help-block">:message</p>') !!}
-                                </div>
-
-                                {{-- Barcode --}}
-                                <div class="col-md-6 form-group{{ $errors->has('barcode') ? ' has-error' : '' }}">
-                                    <label>Barcode</label>
-                                    <input type="text" class="form-control" name="barcode" placeholder="e.g. Barcode">
-                                    {!! $errors->first('barcode', '<p class="help-block">:message</p>') !!}
-                                </div>
-
-                                <!-- Gambar -->
-                                <div class="col-md-12 form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-                                    <label>Gambar Produk</label>
-                                    <input type="file" class="form-control" name="img">
-                                    {!! $errors->first('img', '<p class="help-block">:message</p>') !!}
-                                </div>
-
-                                {{-- Note --}}
-                                <div class="col-md-12 form-group{{ $errors->has('note') ? ' has-error' : '' }}">
-                                    <label>Catatan</label>
-                                    <textarea class="form-control textarea" name="note" rows="10" cols="30" placeholder="e.g. Catatan"></textarea>
-                                    {!! $errors->first('note', '<p class="help-block">:message</p>') !!}
-                                </div>
-
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn bg-green pull-right">Tambah</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="panel-footer">
-                            <b><span class="txtc-red">*</span> Wajib diisi</b>
+                            </div>
+                            <div class="panel-footer">
+                                <b><span class="txtc-red">*</span> Wajib diisi</b>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                    {{-- Daftar Produk --}}
+                    <div class="col-md-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Daftar Produk</b>
+                            </div>
+                            <div class="panel-body">
+
+                                {{-- Table Produk --}}
+                                <table class="table table-responsive table-striped table_array">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama Produk <span class="txtc-red">*</span></th>
+                                            <th style="width:100px;">Jumlah <span class="txtc-red">*</span></th>
+                                            <th style="width:200px;">Harga Beli Per Unit <span class="txtc-red">*</span></th>
+                                            <th style="width:50px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                                {{-- Button Tambah Produk --}}
+                                <div class="row" style="margin-top:-10px;padding-left:10px;">
+                                    <div class="col-md-12">
+                                        <a class="txtc-green" role="button" onclick="addProduct()">+ Tambah Produk</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <b><span class="txtc-red">*</span> Wajib diisi</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Button Proses --}}
+                    <div class="col-md-12">
+                        <button type="button" onclick="showData()" data-toggle="modal" data-target="#modal-check" class="btn bg-green pull-right">Proses Penjualan</button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal-check">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                    <b class="modal-title">Data Penjualan</b>
+                                </div>
+                                <div class="modal-body">
+
+                                    {{-- Content Modal --}}
+                                    {{-- <p><b>Catatan</b> <span class="pull-right" id="note_show"></span></p> --}}
+                                    <br/>
+                                    <div id="list_produk"></div>
+                                    <p class="text-center">
+                                        <b>Total Biaya Dikeluarkan: <span class="badge bgc-green" style="margin-left:5px;" id="totfinal_show"></span></b>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn bg-green">Tambah Penjualan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             
         </section>
@@ -139,5 +239,86 @@
     <script type="text/javascript">
         $(".select2").select2();
         $('.textarea').wysihtml5()
+
+        $('#regPelanggaForm').hide();
+        $('#notregPelangganForm').hide();
+        $('#resellerForm').hide();
+
+        var product = [];
+        var qty = [];
+        var price_buy = [];
+        var table;
+        var list_produk = "";
+        var total_harga_final = 0;
+        var note = "";
+
+        function customerType() {
+            var tipe_pelanggan = document.getElementById("customer_type").value;
+            console.log(status);
+            if (tipe_pelanggan == "1") {
+                $('#notregPelangganForm').hide();
+                $('#resellerForm').hide();
+                $('#regPelanggaForm').slideDown(500);
+            } else if(tipe_pelanggan == "2") {
+                $('#regPelanggaForm').hide();
+                $('#resellerForm').hide();
+                $('#notregPelangganForm').slideDown(500);
+            } else {
+                $('#regPelanggaForm').hide();
+                $('#notregPelangganForm').hide();
+                $('#resellerForm').slideDown(500);
+            }
+        }
+
+        function showData() {
+            var no = 0;
+            note = document.getElementsByClassName('note');
+            product = document.getElementsByClassName('product');
+            qty = document.getElementsByClassName('qty');
+            price_buy = document.getElementsByClassName('price_buy');
+
+            list_produk = "";
+            table = "<table class='table table-responsive table-striped table-bordered'><thead><tr>" +
+                "<th>No</th>" +
+                "<th>Produk</th>" +
+                "<th>Jumlah</th>" +
+                "<th>Harga Per Unit</th>" + 
+                "<th>Total</th></thead></tr><tbody>";
+            
+            var length = product.length;
+            for(var i=0; i<length; i++){
+                if(parseInt(price_buy[i].value)) {
+                    total_harga_final += parseInt(price_buy[i].value) * parseInt(qty[i].value);
+                }
+                table+="<tr>";
+                table+="<td>"+ (no+=1) +"</td>";
+                table+="<td>"+product[i].options[product[i].selectedIndex].innerHTML+"</td>";
+                table+="<td>"+qty[i].value+"</td>";
+                table+="<td> Rp. "+price_buy[i].value+"</td>";
+                table+="<td> Rp. "+price_buy[i].value * qty[i].value+"</td>";
+                table+="</tr>";
+            }
+            table+="</tbody></table>";
+            $("#list_produk").html(table);
+            
+            document.getElementById('note_show').innerHTML = note[0].value == '' ? '-' : note[0].value;
+            document.getElementById('totfinal_show').innerHTML = "Rp. " + total_harga_final;
+            document.getElementById('total_harga_final').value = total_harga_final;
+        }
+
+        function addProduct() {
+            var markup = "<tr>" +
+                "<td><select name='product[]' class='form-control select2 product'><option selected disabled>Pilih Produk</option><?php foreach ($product as $item) { ?><option value='<?php echo $item->id ?>'><?php echo $item->product_name ?> - <?php echo $item->label_name ?></option><?php }; ?></select></td>" +
+                "<td><input type='number' class='form-control qty' name='qty[]' placeholder='e.g. 1' style='text-align:right;'></td>" +
+                "<td><input type='text' class='form-control price_buy' name='price_buy[]' placeholder='e.g. 10000' style='text-align:right;'></td>" +
+                "<td class='text-center' style='padding-top:14px;'><a href='#delete' onclick='delProduct(this)' class='txtc-orange'><i class='fas fa-trash'></i></a></td>" +
+                "</tr>";
+            $(".table_array tbody").append(markup);
+            $('.select2').select2();
+        }
+
+        function delProduct(data) {
+            data.closest('tr').remove();
+        }
     </script>
 @endsection
