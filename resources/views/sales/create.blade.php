@@ -119,21 +119,21 @@
                                     {{-- Invoice --}}
                                     <div class="col-md-12 form-group{{ $errors->has('invoice') ? ' has-error' : '' }}">
                                         <label>Invoice <b class="txtc-red">*</b></label>
-                                        <input type="text" class="form-control" name="invoice" placeholder="e.g. INV0001">
+                                        <input type="text" id="invoice" class="form-control" name="invoice" placeholder="e.g. INV0001">
                                         {!! $errors->first('invoice', '<p class="help-block">:message</p>') !!}
                                     </div>
     
                                     {{-- Resi --}}
                                     <div class="col-md-12 form-group{{ $errors->has('resi') ? ' has-error' : '' }}">
                                         <label>Resi <b class="txtc-red">*</b></label>
-                                        <input type="text" class="form-control" name="resi" placeholder="e.g. RESI0001">
+                                        <input type="text" id="resi" class="form-control" name="resi" placeholder="e.g. RESI0001">
                                         {!! $errors->first('resi', '<p class="help-block">:message</p>') !!}
                                     </div>
     
                                     {{-- Ekspedisi --}}
                                     <div class="col-md-12 form-group{{ $errors->has('ekspedisi') ? ' has-error' : '' }}">
                                         <label>Ekspedisi <b class="txtc-red">*</b></label>
-                                        <select name="ekspedisi" class="form-control select2" onchange="customerType()">
+                                        <select id="ekspedisi" name="ekspedisi" class="form-control select2" onchange="customerType()">
                                             <option selected disabled>Pilih ekspedisi</option>
                                             <option value="JNE">JNE</option>
                                             <option value="TIKI">TIKI</option>
@@ -148,14 +148,14 @@
                                     {{-- Ongkir --}}
                                     <div class="col-md-6 form-group{{ $errors->has('ongkir') ? ' has-error' : '' }}">
                                         <label>Ongkos Kirim <b class="txtc-red">*</b></label>
-                                        <input type="text" class="form-control" name="ongkir" placeholder="e.g. 20000">
+                                        <input type="text" id="ongkir" class="form-control" name="ongkir" placeholder="e.g. 20000">
                                         {!! $errors->first('ongkir', '<p class="help-block">:message</p>') !!}
                                     </div>
     
                                     {{-- Status --}}
                                     <div class="col-md-6 form-group{{ $errors->has('status') ? ' has-error' : '' }}">
                                         <label>Status</label>
-                                        <select name="status" class="form-control select2">
+                                        <select id="status_penjualan" name="status" class="form-control select2">
                                             <option selected disabled>Pilih status</option>
                                             <option value="Pending">Pending</option>
                                             <option value="Sukses">Sukses</option>
@@ -223,7 +223,12 @@
                                 <div class="modal-body">
 
                                     {{-- Content Modal --}}
-                                    {{-- <p><b>Catatan</b> <span class="pull-right" id="note_show"></span></p> --}}
+                                    <p><b>Nama Pelanggan/Reseller</b> <span class="pull-right" id="show_name"></span></p>
+                                    <p><b>Invoice</b> <span class="pull-right" id="show_invoice"></span></p>
+                                    <p><b>Resi</b> <span class="pull-right" id="show_resi"></span></p>
+                                    <p><b>Ekspedisi</b> <span class="pull-right" id="show_ekspedisi"></span></p>
+                                    <p><b>Ongkos Kirim</b> <span class="pull-right" id="show_ongkir"></span></p>
+                                    <p><b>Status</b> <span class="pull-right" id="show_status"></span></p>
                                     <br/>
                                     <div id="list_produk"></div>
                                     <p class="text-center">
@@ -261,11 +266,15 @@
         var table;
         var list_produk = "";
         var total_harga_final = 0;
-        var note = "";
+        var nama = "";
+        var invoice = "";
+        var resi = "";
+        var ekspedisi = "";
+        var ongkir = "";
+        var status_penjualan = "";
 
         function customerType() {
             var tipe_pelanggan = document.getElementById("customer_type").value;
-            console.log(status);
             if (tipe_pelanggan == "1") {
                 $('#notregPelangganForm').hide();
                 $('#resellerForm').hide();
@@ -283,7 +292,14 @@
 
         function showData() {
             var no = 0;
-            note = document.getElementsByClassName('note');
+
+            // nama = document.getElementById('nama');
+            invoice = document.getElementById('invoice');
+            resi = document.getElementById('resi');
+            ekspedisi = document.getElementById('ekspedisi');
+            ongkir = document.getElementById('ongkir');
+            status_penjualan = document.getElementById('status_penjualan');
+            
             product = document.getElementsByClassName('product');
             qty = document.getElementsByClassName('qty');
             price_buy = document.getElementsByClassName('price_buy');
@@ -312,9 +328,18 @@
             table+="</tbody></table>";
             $("#list_produk").html(table);
             
-            document.getElementById('note_show').innerHTML = note[0].value == '' ? '-' : note[0].value;
+            // document.getElementById('show_name').innerHTML = nama[0].value == '' ? '-' : nama[0].value;
+            document.getElementById('show_invoice').innerHTML = invoice.value == '' ? '-' : invoice.value;
+            document.getElementById('show_resi').innerHTML = resi.value == '' ? '-' : resi.value;
+            document.getElementById('show_ekspedisi').innerHTML = ekspedisi.value == 'Pilih ekspedisi' ? '-' : ekspedisi.value;
+            document.getElementById('show_ongkir').innerHTML = ongkir.value == '' ? '-' : ongkir.value;
+            document.getElementById('show_status').innerHTML = status_penjualan.value == 'Pilih status' ? '-' : status_penjualan.value;
+
+            console.log(status.value);
+            
+
             document.getElementById('totfinal_show').innerHTML = "Rp. " + total_harga_final;
-            document.getElementById('total_harga_final').value = total_harga_final;
+            // document.getElementById('total_harga_final').value = total_harga_final;
         }
 
         function addProduct() {

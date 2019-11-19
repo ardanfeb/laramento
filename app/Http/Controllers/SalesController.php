@@ -43,7 +43,17 @@ class SalesController extends Controller
 
     public function store(Request $request)
     {
-        //
+
+        // Seleksi tipe pelanggan
+        if ($request->input('customer') !== null) { // Customer
+            
+        } else if ($request->input('reseller') !== null) { // Reseller
+            
+        } else { // Customer not registered
+            
+        }
+
+        return redirect()->route('sales.index');
     }
 
     public function show($id)
