@@ -56,7 +56,7 @@
                                         {!! $errors->first('customer_type', '<p class="help-block">:message</p>') !!}
                                     </div>
 
-                                    {{-- Form Register Pelanggan --}}
+                                    {{-- Form Pelanggan Terdaftar --}}
                                     <div id="regPelanggaForm" class="col-md-12 form-group{{ $errors->has('customer') ? ' has-error' : '' }}">
                                         <label>Pelanggan</label>
                                         <select name="customer" class="form-control select2">
@@ -69,7 +69,7 @@
                                         {!! $errors->first('customer', '<p class="help-block">:message</p>') !!}
                                     </div>
 
-                                    {{-- Form Non Register Pelanggan --}}
+                                    {{-- Form Pelanggan Belum Terdaftar --}}
                                     <div id="notregPelangganForm" class="col-md-12">
                                         <div class="row">
 

@@ -43,15 +43,30 @@ class SalesController extends Controller
 
     public function store(Request $request)
     {
-
-        // Seleksi tipe pelanggan
-        if ($request->input('customer') !== null) { // Customer
-            
-        } else if ($request->input('reseller') !== null) { // Reseller
-            
-        } else { // Customer not registered
-            
+        // Customer Type
+        if ($request->input('customer_type') == '1') { // Pelanggan Terdaftar
+            $this->validate($request, [
+                'customer' => 'required',
+            ]);
+        } else if ($request->input('customer_type') == '2') { // Pelanggan Belum Terdaftar
+            $this->validate($request, [
+                'customer_name' => 'required',
+                'customer_phone' => 'required|numeric',
+                'customer_address' => 'required',
+            ]);
+        } else { // Reseller
+            $this->validate($request, [
+                'reseller' => 'required',
+            ]);
         }
+
+        $this->validate($request, [
+            'invoice' => 'required',
+            'resi' => 'required',
+            'ekspedisi' => 'required',
+            'ongkir' => 'required',
+            'status' => 'required',
+        ]);
 
         return redirect()->route('sales.index');
     }
