@@ -36,6 +36,7 @@ class SalesController extends Controller
             'customer' => DB::table('customers')->get(),
             'product' => $product,
             'reseller' => $reseller,
+            'marketplace' => DB::table('marketplaces')->get(),
         );
 
         return view('sales.create', $data);
@@ -43,6 +44,12 @@ class SalesController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'customer_type' => 'required',
+            'selling_type' => 'required',
+            'status' => 'required',
+        ]);
+
         // Customer Type
         if ($request->input('customer_type') == '1') { // Pelanggan Terdaftar
             $this->validate($request, [
@@ -60,13 +67,19 @@ class SalesController extends Controller
             ]);
         }
 
-        $this->validate($request, [
-            'invoice' => 'required',
-            'resi' => 'required',
-            'ekspedisi' => 'required',
-            'ongkir' => 'required',
-            'status' => 'required',
-        ]);
+        // Selling Type
+        if ($request->input('selling_type') == 'online') { // Online
+            $this->validate($request, [
+                'resi' => 'required',
+                'marketplace' => 'required',
+                'ekspedisi' => 'required',
+                'ongkir' => 'required',
+            ]);
+
+            // $invoice =
+        } else { // Offline
+            // $invoice = ""
+        }
 
         return redirect()->route('sales.index');
     }

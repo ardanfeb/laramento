@@ -45,7 +45,7 @@
                                     </div>
 
                                     {{-- Jenis Pelanggan --}}
-                                    <div class="col-md-12 form-group{{ $errors->has('customer') ? ' has-error' : '' }}">
+                                    <div class="col-md-12 form-group{{ $errors->has('customer_type') ? ' has-error' : '' }}">
                                         <label>Tipe Pelanggan</label>
                                         <select name="customer_type" id="customer_type" class="form-control select2" onchange="customerType()">
                                             <option selected disabled>Pilih tipe pelanggan</option>
@@ -116,45 +116,75 @@
                                         <hr style="margin-top:5px;">
                                     </div>
 
+                                    {{-- Jenis Pembelian --}}
+                                    <div class="col-md-12 form-group{{ $errors->has('selling_type') ? ' has-error' : '' }}">
+                                        <label>Tipe Pembelian <b class="txtc-red">*</b></label>
+                                        <select name="selling_type" id="selling_type" class="form-control select2" onchange="sellingType()">
+                                            <option selected disabled>Pilih tipe pembelian</option>
+                                            <option value="online">Online</option>
+                                            <option value="offline">Offline</option>
+                                        </select>
+                                        {!! $errors->first('selling_type', '<p class="help-block">:message</p>') !!}
+                                    </div>
+
                                     {{-- Invoice --}}
-                                    <div class="col-md-12 form-group{{ $errors->has('invoice') ? ' has-error' : '' }}">
+                                    {{-- <div class="col-md-12 form-group{{ $errors->has('invoice') ? ' has-error' : '' }}">
                                         <label>Invoice <b class="txtc-red">*</b></label>
                                         <input type="text" id="invoice" class="form-control" name="invoice" placeholder="e.g. INV0001">
                                         {!! $errors->first('invoice', '<p class="help-block">:message</p>') !!}
-                                    </div>
-    
-                                    {{-- Resi --}}
-                                    <div class="col-md-12 form-group{{ $errors->has('resi') ? ' has-error' : '' }}">
-                                        <label>Resi <b class="txtc-red">*</b></label>
-                                        <input type="text" id="resi" class="form-control" name="resi" placeholder="e.g. RESI0001">
-                                        {!! $errors->first('resi', '<p class="help-block">:message</p>') !!}
-                                    </div>
-    
-                                    {{-- Ekspedisi --}}
-                                    <div class="col-md-12 form-group{{ $errors->has('ekspedisi') ? ' has-error' : '' }}">
-                                        <label>Ekspedisi <b class="txtc-red">*</b></label>
-                                        <select id="ekspedisi" name="ekspedisi" class="form-control select2" onchange="customerType()">
-                                            <option selected disabled>Pilih ekspedisi</option>
-                                            <option value="JNE">JNE</option>
-                                            <option value="TIKI">TIKI</option>
-                                            <option value="POS">POS</option>
-                                            <option value="J&T">J&T</option>
-                                            <option value="NinjaExpress">NinjaExpress</option>
-                                            <option value="GOJEK/Grab">GOJEK/Grab</option>
-                                        </select>
-                                        {!! $errors->first('ekspedisi', '<p class="help-block">:message</p>') !!}
-                                    </div>
-    
-                                    {{-- Ongkir --}}
-                                    <div class="col-md-6 form-group{{ $errors->has('ongkir') ? ' has-error' : '' }}">
-                                        <label>Ongkos Kirim <b class="txtc-red">*</b></label>
-                                        <input type="text" id="ongkir" class="form-control" name="ongkir" placeholder="e.g. 20000">
-                                        {!! $errors->first('ongkir', '<p class="help-block">:message</p>') !!}
+                                    </div> --}}
+
+                                    {{-- Online --}}
+                                    <div id="formOnline" class="col-md-12">
+                                        <div class="row">
+
+                                            {{-- Resi --}}
+                                            <div class="col-md-12 form-group{{ $errors->has('resi') ? ' has-error' : '' }}">
+                                                <label>Resi <b class="txtc-red">*</b></label>
+                                                <input type="text" id="resi" class="form-control" name="resi" placeholder="e.g. RESI0001">
+                                                {!! $errors->first('resi', '<p class="help-block">:message</p>') !!}
+                                            </div>
+
+                                            {{-- Marketplace --}}
+                                            <div class="col-md-12 form-group{{ $errors->has('marketplace') ? ' has-error' : '' }}">
+                                                <label>Marketplace <b class="txtc-red">*</b></label>
+                                                <select name="marketplace" id="marketplace" class="form-control select2">
+                                                    <option selected disabled>Pilih marketplace</option>
+                                                    
+                                                    @foreach ($marketplace as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                {!! $errors->first('marketplace', '<p class="help-block">:message</p>') !!}
+                                            </div>
+
+                                            {{-- Ekspedisi --}}
+                                            <div class="col-md-12 form-group{{ $errors->has('ekspedisi') ? ' has-error' : '' }}">
+                                                <label>Ekspedisi <b class="txtc-red">*</b></label>
+                                                <select id="ekspedisi" name="ekspedisi" class="form-control select2" onchange="customerType()">
+                                                    <option selected disabled>Pilih ekspedisi</option>
+                                                    <option value="JNE">JNE</option>
+                                                    <option value="TIKI">TIKI</option>
+                                                    <option value="POS">POS</option>
+                                                    <option value="J&T">J&T</option>
+                                                    <option value="NinjaExpress">NinjaExpress</option>
+                                                    <option value="GOJEK/Grab">GOJEK/Grab</option>
+                                                </select>
+                                                {!! $errors->first('ekspedisi', '<p class="help-block">:message</p>') !!}
+                                            </div>
+            
+                                            {{-- Ongkir --}}
+                                            <div class="col-md-12 form-group{{ $errors->has('ongkir') ? ' has-error' : '' }}">
+                                                <label>Ongkos Kirim <b class="txtc-red">*</b></label>
+                                                <input type="text" id="ongkir" class="form-control" name="ongkir" placeholder="e.g. 20000">
+                                                {!! $errors->first('ongkir', '<p class="help-block">:message</p>') !!}
+                                            </div>
+                                        </div>
                                     </div>
     
                                     {{-- Status --}}
-                                    <div class="col-md-6 form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                                        <label>Status</label>
+                                    <div class="col-md-12 form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                                        <label>Status <b class="txtc-red">*</b></label>
                                         <select id="status_penjualan" name="status" class="form-control select2">
                                             <option selected disabled>Pilih status</option>
                                             <option value="Pending">Pending</option>
@@ -259,6 +289,7 @@
         $('#regPelanggaForm').hide();
         $('#notregPelangganForm').hide();
         $('#resellerForm').hide();
+        $('#formOnline').hide();
 
         var product = [];
         var qty = [];
@@ -287,6 +318,15 @@
                 $('#regPelanggaForm').hide();
                 $('#notregPelangganForm').hide();
                 $('#resellerForm').slideDown(500);
+            }
+        }
+
+        function sellingType() {
+            var tipe_pembelian = document.getElementById("selling_type").value;
+            if (tipe_pembelian == "online") {
+                $('#formOnline').slideDown(700);
+            } else {
+                $('#formOnline').slideUp(700);
             }
         }
 
