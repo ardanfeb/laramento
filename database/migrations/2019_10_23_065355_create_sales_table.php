@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
             $table->bigIncrements('id');
             $table->string('recipe');
             $table->string('invoice');
+            $table->string('marketplace')->nullable();
             $table->string('expedition')->nullable();
             $table->string('postal_fee')->nullable();
             $table->string('total_product');

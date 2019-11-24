@@ -152,7 +152,7 @@
                                                     <option selected disabled>Pilih marketplace</option>
                                                     
                                                     @foreach ($marketplace as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                        <option value="{{ $item->code }}">{{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 {!! $errors->first('marketplace', '<p class="help-block">:message</p>') !!}

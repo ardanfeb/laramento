@@ -76,9 +76,9 @@ class SalesController extends Controller
                 'ongkir' => 'required',
             ]);
 
-            // $invoice =
+            $invoice = "INV/".$request->input('marketplace')."/".Carbon::now();
         } else { // Offline
-            // $invoice = ""
+            $invoice = "INV/OFFLINE/".Carbon::now();
         }
 
         return redirect()->route('sales.index');
