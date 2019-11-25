@@ -15,18 +15,18 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('recipe');
+            $table->string('recipe')->nullable();
             $table->string('invoice');
             $table->string('marketplace')->nullable();
             $table->string('expedition')->nullable();
             $table->string('postal_fee')->nullable();
             $table->string('total_product');
-            $table->unsignedBigInteger('customers_id');
+            $table->BigInteger('customers_id');
+            $table->string('customers_type');
             $table->unsignedBigInteger('users_id');
             $table->string('status');
             $table->timestamps();
 
-            $table->foreign('customers_id')->references('id')->on('customers');
             $table->foreign('users_id')->references('id')->on('users');
         });
     }

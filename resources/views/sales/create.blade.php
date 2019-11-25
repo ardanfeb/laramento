@@ -215,7 +215,7 @@
                                         <tr>
                                             <th>Nama Produk <span class="txtc-red">*</span></th>
                                             <th style="width:100px;">Jumlah <span class="txtc-red">*</span></th>
-                                            <th style="width:200px;">Harga Beli Per Unit <span class="txtc-red">*</span></th>
+                                            <th style="width:200px;">Harga Jual Per Unit <span class="txtc-red">*</span></th>
                                             <th style="width:50px;"></th>
                                         </tr>
                                     </thead>
@@ -293,7 +293,7 @@
 
         var product = [];
         var qty = [];
-        var price_buy = [];
+        var price_sell = [];
         var table;
         var list_produk = "";
         var total_harga_final = 0;
@@ -342,7 +342,7 @@
             
             product = document.getElementsByClassName('product');
             qty = document.getElementsByClassName('qty');
-            price_buy = document.getElementsByClassName('price_buy');
+            price_sell = document.getElementsByClassName('price_sell');
 
             list_produk = "";
             table = "<table class='table table-responsive table-striped table-bordered'><thead><tr>" +
@@ -354,15 +354,15 @@
             
             var length = product.length;
             for(var i=0; i<length; i++){
-                if(parseInt(price_buy[i].value)) {
-                    total_harga_final += parseInt(price_buy[i].value) * parseInt(qty[i].value);
+                if(parseInt(price_sell[i].value)) {
+                    total_harga_final += parseInt(price_sell[i].value) * parseInt(qty[i].value);
                 }
                 table+="<tr>";
                 table+="<td>"+ (no+=1) +"</td>";
                 table+="<td>"+product[i].options[product[i].selectedIndex].innerHTML+"</td>";
                 table+="<td>"+qty[i].value+"</td>";
-                table+="<td> Rp. "+price_buy[i].value+"</td>";
-                table+="<td> Rp. "+price_buy[i].value * qty[i].value+"</td>";
+                table+="<td> Rp. "+price_sell[i].value+"</td>";
+                table+="<td> Rp. "+price_sell[i].value * qty[i].value+"</td>";
                 table+="</tr>";
             }
             table+="</tbody></table>";
@@ -386,7 +386,7 @@
             var markup = "<tr>" +
                 "<td><select name='product[]' class='form-control select2 product'><option selected disabled>Pilih Produk</option><?php foreach ($product as $item) { ?><option value='<?php echo $item->id ?>'><?php echo $item->product_name ?> - <?php echo $item->label_name ?></option><?php }; ?></select></td>" +
                 "<td><input type='number' class='form-control qty' name='qty[]' placeholder='e.g. 1' style='text-align:right;'></td>" +
-                "<td><input type='text' class='form-control price_buy' name='price_buy[]' placeholder='e.g. 10000' style='text-align:right;'></td>" +
+                "<td><input type='text' class='form-control price_sell' name='price_sell[]' placeholder='e.g. 10000' style='text-align:right;'></td>" +
                 "<td class='text-center' style='padding-top:14px;'><a href='#delete' onclick='delProduct(this)' class='txtc-orange'><i class='fas fa-trash'></i></a></td>" +
                 "</tr>";
             $(".table_array tbody").append(markup);

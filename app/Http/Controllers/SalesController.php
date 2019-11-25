@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
 use Carbon\Carbon;
+use App\Sales;
+use Illuminate\Support\Facades\Auth;
 
 class SalesController extends Controller
 {
@@ -55,16 +57,31 @@ class SalesController extends Controller
             $this->validate($request, [
                 'customer' => 'required',
             ]);
+
+            $customer_id = $request->input('customer');
+            $customer_type = "customer";
         } else if ($request->input('customer_type') == '2') { // Pelanggan Belum Terdaftar
             $this->validate($request, [
                 'customer_name' => 'required',
                 'customer_phone' => 'required|numeric',
                 'customer_address' => 'required',
             ]);
+
+            $id = DB::table('customers')->insertGetId([
+                'customer_name' => $request->input('customer_name'),
+                'phone' => $request->input('customer_phone'),
+                'address' => $request->input('customer_address'),
+            ]);            
+
+            $customer_id = $id;
+            $customer_type = "customer";
         } else { // Reseller
             $this->validate($request, [
                 'reseller' => 'required',
             ]);
+                
+            $customer_id = $request->input('reseller');
+            $customer_type = "reseller";
         }
 
         // Selling Type
@@ -76,10 +93,52 @@ class SalesController extends Controller
                 'ongkir' => 'required',
             ]);
 
-            $invoice = "INV/".$request->input('marketplace')."/".Carbon::now();
+            $marketplace = $request->input('marketplace');
+            $invoice = "INV/".$request->input('marketplace')."/".Carbon::now()->format('dmY/His');
         } else { // Offline
-            $invoice = "INV/OFFLINE/".Carbon::now();
+            $invoice = "INV/OFFLINE/".Carbon::now()->format('dmY/His');
+            $marketplace = "OFFLINE";
         }
+
+        // Insert Into Sales Table
+        $sales = new Sales;
+        $sales->recipe = $request->input('resi');
+        $sales->invoice = $invoice;
+        $sales->marketplace = $marketplace;
+        $sales->expedition = $request->input('ekspedisi');
+        $sales->postal_fee = $request->input('ongkir');
+        $sales->total_product = 0;
+        $sales->customers_id = $customer_id;
+        $sales->customers_type = $customer_type;
+        $sales->users_id = Auth::user()->id;
+        $sales->status = $request->input('status');
+        $sales->save();
+
+        // Insert Into Sales_items Table
+        $productArr = $request->input('product');
+        $qtyArr = $request->input('qty');
+        $priceArr = $request->input('price_sell');
+
+        if(count($productArr) > count($priceArr)) $count = count($priceArr);
+        else $count = count($productArr);
+
+        $items = array();
+        for($i = 0; $i < $count; $i++){
+            $item = array(
+                'sales_id' => $sales->id,
+                'product_name' => $productArr[$i],
+                'qty' => $qtyArr[$i],
+                'price_sell' => $priceArr[$i],
+                // 'array_id' => $i,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            );
+            $items[] = $item;
+
+            // DB::table('stocks')->where('products_id', $productArr[$i])->decrement('stock', $pcsArray[$i]);
+        }
+
+        DB::table("sales_items")->insert($items);
 
         return redirect()->route('sales.index');
     }

@@ -3,6 +3,10 @@
 use Illuminate\Database\Seeder;
 use App\Role;
 use App\User;
+use App\Category;
+use App\Label;
+use App\Product;
+use Illuminate\Support\Facades\DB;
 
 class UsersSeeder extends Seeder
 {
@@ -77,5 +81,29 @@ class UsersSeeder extends Seeder
         $member->password = bcrypt('password');
         $member->save();
         $member->attachRole($resellerRole);
+
+
+        // Product
+        $category = new Category();
+        $category->category_name = "Baju";
+        $category->save();
+
+        $label = new Label();
+        $label->label_name = "Small";
+        $label->save();
+
+        $product = new Product();
+        $product->categories_id = 1;
+        $product->labels_id = 1;
+        $product->product_name = "Gildan Stripe";
+        $product->price_buy = 130000;
+        $product->price_sell = 150000;
+        $product->save();
+
+        DB::table('marketplaces')->insert([
+            'name' => 'Tokopedia',
+            'code' => 'TOKPED'
+        ]);
+
     }
 }
