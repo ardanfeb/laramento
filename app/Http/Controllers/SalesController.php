@@ -145,7 +145,36 @@ class SalesController extends Controller
 
     public function show($id)
     {
-        //
+        $customers = Sales::find($id);
+        
+        if ($customers->customers_type == 'reseller') {
+            $sales = DB::table('sales')
+                ->select('sales.*', 'users.name as name')
+                ->join('users', 'users.id', '=', 'sales.customers_id')
+                ->where('sales.id', $id)
+                ->first();
+        } else {
+            $sales = DB::table('sales')
+                ->select('sales.*', 'customers.customer_name as name')
+                ->join('customers', 'customers.id', '=', 'sales.customers_id')
+                ->where('sales.id', $id)
+                ->first();
+        }
+
+        $product = DB::table('sales_items')
+            ->select('sales_items.*', 'products.product_name', 'categories.category_name', 'labels.label_name')
+            ->join('products', 'products.id', '=', 'sales_items.product_name')
+            ->join('categories', 'categories.id', '=', 'products.categories_id')
+            ->join('labels', 'labels.id', '=', 'products.labels_id')
+            ->where('sales_id', $id)
+            ->get();
+
+        $data = array(
+            'sales' => $sales,
+            'sales_items' => $product,
+        );
+        
+        return view('sales.show', $data);
     }
 
     public function edit($id)
