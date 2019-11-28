@@ -195,7 +195,10 @@ class SalesController extends Controller
     // Data Table
     public function data(Request $request)
     {
-        $sales = DB::table('sales')->get();
+        $sales = DB::table('sales')
+            ->join('users', 'users.id', '=', 'sales.users_id')
+            ->join('customers', 'customers.id', '=', 'sales.customers_id')
+            ->get();
 
         return Datatables::of($sales)
             ->addIndexColumn()
@@ -206,7 +209,10 @@ class SalesController extends Controller
                     'show_url' => route('sales.show', $sales->id),
                 ]);
             })
-            ->rawColumns(['action'])
+            ->editColumn('status', function($sales){
+                return ($sales->status == "Sukses" ? '<span class="badge bgc-green">Sukses</span>' : '<span class="badge bgc-orange">Pending</span>');
+            })
+            ->rawColumns(['action', 'status'])
             ->make(true);
     }
 }

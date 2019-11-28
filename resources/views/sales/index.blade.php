@@ -34,8 +34,10 @@
                                 <thead>
                                     <tr>
                                         <th style="width:30px;">No</th>
-                                        <th>Created At</th>
+                                        <th>Tanggal</th>
                                         <th>Invoice</th>
+                                        <th>Pelanggan</th>
+                                        <th>Diinput Oleh</th>
                                         <th>Status</th>
                                         <th style="width:30px;"></th>
                                     </tr>
@@ -66,6 +68,8 @@
                 { data: 'DT_RowIndex', name: 'DT_RowIndex' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'invoice', name: 'invoice' },
+                { data: 'customers_id', name: 'customers_id' },
+                { data: 'users_id', name: 'users_id' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', orderable: false, searchable: false },
             ],
