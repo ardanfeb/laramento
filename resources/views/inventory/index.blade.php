@@ -29,13 +29,15 @@
                             <table class="table table-responsive table-bordered table-striped" style="width:100%;" id="table-stok">
                                 <thead>
                                     <tr>
+                                        <th style="width:30px;">No</th>
                                         <th>Nama Produk</th>
+                                        <th>Label</th>
                                         <th>Kategori</th>
-                                        <th style="width:80px;">Stok Masuk</th>
-                                        <th style="width:80px;">Stok Keluar</th>
-                                        <th style="width:80px;">Penjualan</th>
-                                        <th style="width:80px;">Penyesuaian</th>
-                                        <th style="width:80px;">Stok Akhir</th>
+                                        {{-- <th style="width:80px;">Stok Masuk</th> --}}
+                                        {{-- <th style="width:80px;">Stok Keluar</th> --}}
+                                        {{-- <th style="width:80px;">Penjualan</th> --}}
+                                        {{-- <th style="width:80px;">Penyesuaian</th> --}}
+                                        <th style="width:80px;">Stok</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -58,14 +60,17 @@
         $('#table-stok').DataTable({
             processing: true,
             serverSide: true,
+            responsive: true,
             ajax: '{{ route('inventory.stock.data') }}',
             columns: [
+                { data: 'DT_RowIndex', name: 'DT_RowIndex' },
                 { data: 'product_name', name: 'product_name' },
+                { data: 'label_name', name: 'label_name' },
                 { data: 'category_name', name: 'category_name' },
-                { data: 'stok_akhir', name: 'stok_akhir' },
-                { data: 'stok_akhir', name: 'stok_akhir' },
-                { data: 'stok_akhir', name: 'stok_akhir' },
-                { data: 'stok_akhir', name: 'stok_akhir' },
+                // { data: 'stok_akhir', name: 'stok_akhir' },
+                // { data: 'stok_akhir', name: 'stok_akhir' },
+                // { data: 'stok_akhir', name: 'stok_akhir' },
+                // { data: 'stok_akhir', name: 'stok_akhir' },
                 { data: 'stok_akhir', name: 'stok_akhir' },
             ],
             iDisplayLength: 10,

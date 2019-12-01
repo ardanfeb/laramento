@@ -139,7 +139,7 @@ class SalesController extends Controller
             );
             $items[] = $item;
 
-            // DB::table('stocks')->where('products_id', $productArr[$i])->decrement('stock', $pcsArray[$i]);
+            DB::table('inventories')->where('products_id', $productArr[$i])->decrement('qty', $qtyArr[$i]);
         }
 
         DB::table("sales_items")->insert($items);

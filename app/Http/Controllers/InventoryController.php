@@ -33,8 +33,9 @@ class InventoryController extends Controller {
             ->get();
 
         return Datatables::of($inventories)
-            ->editColumn('product_name', function($inventories){
-                return "<div>".$inventories->product_name." <span class='badge' style='margin-left:5px;'>".$inventories->label_name."</span></div>";
+            ->addIndexColumn()
+            ->editColumn('label_name', function($inventories){
+                return "<span class='badge'>".$inventories->label_name."</span></div>";
             })
             ->editColumn('stok_akhir', function($inventories){
                 if ($inventories->stok_akhir <= 0) {
@@ -45,7 +46,7 @@ class InventoryController extends Controller {
                     return "<div class='text-right'><b>".$inventories->stok_akhir."</b></div>";
                 }
             })
-            ->rawColumns(['stok_akhir', 'product_name'])
+            ->rawColumns(['stok_akhir', 'label_name'])
             ->make(true);
     }
 
