@@ -203,7 +203,10 @@ class SalesController extends Controller
             ->editColumn('customer', function($sales){
                 return ($sales->customers_type == "reseller" ? '<span class="badge bgc-blue" style="margin-right:5px;">Reseller</span> '.$sales->customers_name : '<span class="badge bgc-yellow" style="margin-right:5px;">Pelanggan</span> '.$sales->customers_name);
             })
-            ->rawColumns(['action', 'customer', 'status'])
+            ->editColumn('invoice', function($sales){
+                return '<a href="'. route('sales.show', $sales->id) .'">'. $sales->invoice .'</a>';
+            })
+            ->rawColumns(['invoice', 'action', 'customer', 'status'])
             ->make(true);
     }
 }
