@@ -42,8 +42,8 @@
                                         <p><b>Marketplace : </b><span class="badge pull-right bg-gray">{{ $sales->marketplace }}</span></p>
                                         <p><b>Ekspedisi : </b><span class="badge pull-right bg-gray">{{ $sales->expedition }}</span></p>
                                     @endif
-                                    <p><b>{{ $sales->customers_type == 'customer' ? "Pelanggan" : "Reseller" }} : </b><span class="badge pull-right bg-gray">{{ $sales->name }}</span></p>
-                                    <p><b>Status : </b><span class="badge pull-right bg-gray">{{ $sales->status }}</span></p>
+                                    <p><b>{{ $sales->customers_type == 'customer' ? "Pelanggan" : "Reseller" }} : </b><span class="badge pull-right {{ $sales->customers_type == 'customer' ? 'bgc-yellow' : 'bgc-blue' }}">{{ $sales->customers_name }}</span></p>
+                                    <p><b>Status : </b><span class="badge pull-right {{ $sales->status == 'Sukses' ? 'bgc-green' : 'bgc-orange' }}">{{ $sales->status }}</span></p>
                                 </div>
                                 <div class="col-md-8">
                                     <button id="print" class="btn btn-default pull-right" onclick="print()"><i class="fa fa-print"></i></button>

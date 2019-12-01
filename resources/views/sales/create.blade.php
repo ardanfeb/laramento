@@ -253,8 +253,8 @@
                                 <div class="modal-body">
 
                                     {{-- Content Modal --}}
-                                    <p><b>Nama Pelanggan/Reseller</b> <span class="pull-right" id="show_name"></span></p>
-                                    <p><b>Invoice</b> <span class="pull-right" id="show_invoice"></span></p>
+                                    {{-- <p><b>Nama Pelanggan/Reseller</b> <span class="pull-right" id="show_name"></span></p> --}}
+                                    {{-- <p><b>Invoice</b> <span class="pull-right" id="show_invoice"></span></p> --}}
                                     <p><b>Resi</b> <span class="pull-right" id="show_resi"></span></p>
                                     <p><b>Ekspedisi</b> <span class="pull-right" id="show_ekspedisi"></span></p>
                                     <p><b>Ongkos Kirim</b> <span class="pull-right" id="show_ongkir"></span></p>
@@ -266,6 +266,7 @@
                                     </p>
                                 </div>
                                 <div class="modal-footer">
+                                    <input type="hidden" id="total_product" name="total_product">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn bg-green">Tambah Penjualan</button>
                                 </div>
@@ -296,13 +297,17 @@
         var price_sell = [];
         var table;
         var list_produk = "";
-        var total_harga_final = 0;
-        var nama = "";
-        var invoice = "";
         var resi = "";
         var ekspedisi = "";
-        var ongkir = "";
+        var ongkir = 0;
         var status_penjualan = "";
+
+        function formatRupiah(angka) {
+            var rupiah = '';		
+            var angkarev = angka.toString().split('').reverse().join('');
+            for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+            return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
+        }
 
         function customerType() {
             var tipe_pelanggan = document.getElementById("customer_type").value;
@@ -332,9 +337,10 @@
 
         function showData() {
             var no = 0;
+            var total_harga_final = 0;
 
             // nama = document.getElementById('nama');
-            invoice = document.getElementById('invoice');
+            // invoice = document.getElementById('invoice');
             resi = document.getElementById('resi');
             ekspedisi = document.getElementById('ekspedisi');
             ongkir = document.getElementById('ongkir');
@@ -353,33 +359,27 @@
                 "<th>Total</th></thead></tr><tbody>";
             
             var length = product.length;
-            for(var i=0; i<length; i++){
-                if(parseInt(price_sell[i].value)) {
-                    total_harga_final += parseInt(price_sell[i].value) * parseInt(qty[i].value);
-                }
+            for(var i=0; i<length; i++) {
+                total_harga_final += (price_sell[i].value * qty[i].value);
+
                 table+="<tr>";
                 table+="<td>"+ (no+=1) +"</td>";
                 table+="<td>"+product[i].options[product[i].selectedIndex].innerHTML+"</td>";
                 table+="<td>"+qty[i].value+"</td>";
-                table+="<td> Rp. "+price_sell[i].value+"</td>";
-                table+="<td> Rp. "+price_sell[i].value * qty[i].value+"</td>";
+                table+="<td>"+ formatRupiah(price_sell[i].value) +"</td>";
+                table+="<td>"+ formatRupiah(price_sell[i].value * qty[i].value) +"</td>";
                 table+="</tr>";
             }
             table+="</tbody></table>";
             $("#list_produk").html(table);
-            
-            // document.getElementById('show_name').innerHTML = nama[0].value == '' ? '-' : nama[0].value;
-            document.getElementById('show_invoice').innerHTML = invoice.value == '' ? '-' : invoice.value;
+
             document.getElementById('show_resi').innerHTML = resi.value == '' ? '-' : resi.value;
             document.getElementById('show_ekspedisi').innerHTML = ekspedisi.value == 'Pilih ekspedisi' ? '-' : ekspedisi.value;
-            document.getElementById('show_ongkir').innerHTML = ongkir.value == '' ? '-' : ongkir.value;
+            document.getElementById('show_ongkir').innerHTML = ongkir.value == 0 ? 'Rp. 0' : formatRupiah(ongkir.value);
             document.getElementById('show_status').innerHTML = status_penjualan.value == 'Pilih status' ? '-' : status_penjualan.value;
-
-            console.log(status.value);
             
-
-            document.getElementById('totfinal_show').innerHTML = "Rp. " + total_harga_final;
-            // document.getElementById('total_harga_final').value = total_harga_final;
+            document.getElementById('totfinal_show').innerHTML = formatRupiah(total_harga_final);
+            document.getElementById('total_product').value = (total_harga_final + ongkir.value);
         }
 
         function addProduct() {

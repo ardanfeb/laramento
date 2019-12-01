@@ -33,10 +33,10 @@
                             <table class="table table-responsive table-bordered table-striped" style="width:100%;" id="table-sales">
                                 <thead>
                                     <tr>
-                                        <th style="width:30px;">No</th>
+                                        {{-- <th style="width:30px;">No</th> --}}
                                         <th>Tanggal</th>
                                         <th>Invoice</th>
-                                        <th>Pelanggan</th>
+                                        <th>Pembeli</th>
                                         <th>Diinput Oleh</th>
                                         <th>Status</th>
                                         <th style="width:30px;"></th>
@@ -65,11 +65,11 @@
             responsive: true,
             ajax: '{{ route('sales.data') }}',
             columns: [
-                { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+                // { data: 'DT_RowIndex', name: 'DT_RowIndex' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'invoice', name: 'invoice' },
-                { data: 'customers_id', name: 'customers_id' },
-                { data: 'users_id', name: 'users_id' },
+                { data: 'customer', name: 'customer' },
+                { data: 'employee_name', name: 'employee_name' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', orderable: false, searchable: false },
             ],
@@ -81,7 +81,7 @@
             scrollCollapse: true,
             paging: true,
             order: [
-                [1, "desc"],
+                [0, "desc"],
             ]
         });
     </script>

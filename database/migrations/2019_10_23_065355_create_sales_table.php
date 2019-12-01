@@ -21,7 +21,7 @@ class CreateSalesTable extends Migration
             $table->string('expedition')->nullable();
             $table->string('postal_fee')->nullable();
             $table->string('total_product');
-            $table->BigInteger('customers_id');
+            $table->string('customers_name');
             $table->string('customers_type');
             $table->unsignedBigInteger('users_id');
             $table->string('status');

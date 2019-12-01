@@ -58,7 +58,9 @@ class SalesController extends Controller
                 'customer' => 'required',
             ]);
 
-            $customer_id = $request->input('customer');
+            $customer = DB::table('customers')->find($request->input('customer'));
+
+            $customer_name = $customer->customer_name;
             $customer_type = "customer";
         } else if ($request->input('customer_type') == '2') { // Pelanggan Belum Terdaftar
             $this->validate($request, [
@@ -71,16 +73,18 @@ class SalesController extends Controller
                 'customer_name' => $request->input('customer_name'),
                 'phone' => $request->input('customer_phone'),
                 'address' => $request->input('customer_address'),
-            ]);            
+            ]);
 
-            $customer_id = $id;
+            $customer_name = $request->input('customer_name');
             $customer_type = "customer";
         } else { // Reseller
             $this->validate($request, [
                 'reseller' => 'required',
             ]);
                 
-            $customer_id = $request->input('reseller');
+            $reseller = DB::table('users')->find($request->input('reseller'));
+
+            $customer_name = $reseller->name;
             $customer_type = "reseller";
         }
 
@@ -107,8 +111,8 @@ class SalesController extends Controller
         $sales->marketplace = $marketplace;
         $sales->expedition = $request->input('ekspedisi');
         $sales->postal_fee = $request->input('ongkir');
-        $sales->total_product = 0;
-        $sales->customers_id = $customer_id;
+        $sales->total_product = $request->input('total_product');
+        $sales->customers_name = $customer_name;
         $sales->customers_type = $customer_type;
         $sales->users_id = Auth::user()->id;
         $sales->status = $request->input('status');
@@ -145,22 +149,6 @@ class SalesController extends Controller
 
     public function show($id)
     {
-        $customers = Sales::find($id);
-        
-        if ($customers->customers_type == 'reseller') {
-            $sales = DB::table('sales')
-                ->select('sales.*', 'users.name as name')
-                ->join('users', 'users.id', '=', 'sales.customers_id')
-                ->where('sales.id', $id)
-                ->first();
-        } else {
-            $sales = DB::table('sales')
-                ->select('sales.*', 'customers.customer_name as name')
-                ->join('customers', 'customers.id', '=', 'sales.customers_id')
-                ->where('sales.id', $id)
-                ->first();
-        }
-
         $product = DB::table('sales_items')
             ->select('sales_items.*', 'products.product_name', 'categories.category_name', 'labels.label_name')
             ->join('products', 'products.id', '=', 'sales_items.product_name')
@@ -170,7 +158,7 @@ class SalesController extends Controller
             ->get();
 
         $data = array(
-            'sales' => $sales,
+            'sales' => DB::table('sales')->find($id),
             'sales_items' => $product,
         );
         
@@ -196,8 +184,8 @@ class SalesController extends Controller
     public function data(Request $request)
     {
         $sales = DB::table('sales')
+            ->select('sales.*', 'users.name as employee_name')
             ->join('users', 'users.id', '=', 'sales.users_id')
-            ->join('customers', 'customers.id', '=', 'sales.customers_id')
             ->get();
 
         return Datatables::of($sales)
@@ -212,7 +200,10 @@ class SalesController extends Controller
             ->editColumn('status', function($sales){
                 return ($sales->status == "Sukses" ? '<span class="badge bgc-green">Sukses</span>' : '<span class="badge bgc-orange">Pending</span>');
             })
-            ->rawColumns(['action', 'status'])
+            ->editColumn('customer', function($sales){
+                return ($sales->customers_type == "reseller" ? '<span class="badge bgc-blue" style="margin-right:5px;">Reseller</span> '.$sales->customers_name : '<span class="badge bgc-yellow" style="margin-right:5px;">Pelanggan</span> '.$sales->customers_name);
+            })
+            ->rawColumns(['action', 'customer', 'status'])
             ->make(true);
     }
 }

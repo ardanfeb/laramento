@@ -92,14 +92,6 @@ class UsersSeeder extends Seeder
         $label->label_name = "Small";
         $label->save();
 
-        $product = new Product();
-        $product->categories_id = 1;
-        $product->labels_id = 1;
-        $product->product_name = "Gildan Stripe";
-        $product->price_buy = 130000;
-        $product->price_sell = 150000;
-        $product->save();
-
         DB::table('marketplaces')->insert([
             'name' => 'Tokopedia',
             'code' => 'TOKPED'
