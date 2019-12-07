@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use DataTables;
 use Carbon\Carbon;
 use App\Sales;
+use App\Customer;
 use Illuminate\Support\Facades\Auth;
 
 class SalesController extends Controller
@@ -167,7 +168,17 @@ class SalesController extends Controller
 
     public function edit($id)
     {
-        //
+        $product = DB::table('products')
+            ->select('products.id', 'products.product_name', 'labels.label_name')
+            ->join('labels', 'labels.id', '=', 'products.labels_id')
+            ->get();
+
+        $data = array(
+            'sales' => Sales::find($id),
+            'product' => $product,
+        );
+
+        return view('sales.edit', $data);
     }
 
     public function update(Request $request, $id)
